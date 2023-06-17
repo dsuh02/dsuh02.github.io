@@ -1,0 +1,53 @@
+body {
+  background-color: #1c7c32;
+  background-image:linear-gradient();
+  background-repeat: repeat;
+  background-size:cover;
+}
+
+
+.text{
+  font-family: 'PF Tempesta Seven', sans-serif;
+  color: #252525;
+}
+
+h1 {
+  font-size: 3em;
+  font-weight:bold;
+  text-align: center;
+}
+
+.imgboxes1{
+  grid-column: 1/2;
+  grid-row: 4;
+}
+.imgtreebush1{
+  grid-column: 2/3;
+  grid-row: 4;
+}
+
+.imgbody{
+  width:100%;
+}
+
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(7,1fr); 
+  grid-auto-rows: minmax(100px, auto);
+  gap: 1em;
+}
+
+.box{
+  border: 3px solid black;
+}
+
+.title {
+  grid-column: 1/8;
+  grid-row: 1/2;
+}
+
+.subheader1 {
+  grid-column: 1/8;
+  grid-row:3;
+}
