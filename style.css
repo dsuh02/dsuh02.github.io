@@ -1,53 +1,110 @@
-body {
-  background-color: #1c7c32;
-  background-image:linear-gradient();
-  background-repeat: repeat;
-  background-size:cover;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+html {
+  scroll-behavior:smooth
 }
 
 
-.text{
-  font-family: 'PF Tempesta Seven', sans-serif;
-  color: #252525;
-}
-
-h1 {
-  font-size: 3em;
-  font-weight:bold;
-  text-align: center;
-}
-
-.imgboxes1{
-  grid-column: 1/2;
-  grid-row: 4;
-}
-.imgtreebush1{
-  grid-column: 2/3;
-  grid-row: 4;
-}
-
-.imgbody{
-  width:100%;
+nav {
+  height: 80px;
+  width: 100%;
+  top:0;
+  position: fixed;
+  background: #546461;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem calc((100vw - 1300px)/2);
 }
 
 
-.wrapper {
+
+nav a {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #111D13;
+  padding: 0rem 1.5rem;
+}
+
+
+
+.main-container {
+  margin-top: 80px;
   display: grid;
-  grid-template-columns: repeat(7,1fr); 
-  grid-auto-rows: minmax(100px, auto);
-  gap: 1em;
+  grid-template-columns: 1fr ;
+  height:95vh;
 }
 
-.box{
-  border: 3px solid black;
+.intro {
+  width: auto;
+  height: 100vh;
+  background-image: url("img/unsplash1.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: #111D13;
+  padding: 0 2rem;
 }
 
-.title {
-  grid-column: 1/8;
-  grid-row: 1/2;
+h1  {
+  margin-top: -40vh;
+  margin-bottom: 1rem;
+  font-size: 5rem;
+  align-self: center;
 }
 
-.subheader1 {
-  grid-column: 1/8;
-  grid-row:3;
+h2 {
+  margin-bottom: 1rem;
+  font-size: 5rem;
+  align-self: center;
 }
+
+h3 {
+  margin-bottom: 1rem;
+  font-size: 5rem;
+  align-self: center;
+}
+
+
+
+.intro p {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  align-self: center;
+  justify-self: center;
+}
+
+button {
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  border: none;
+  color: #BED8B9;
+  background: #111D13 ;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+button:hover {
+  background: #415D43 ;
+  color:#111D13;
+}
+
+
+.main-image {
+  align-self: center;
+  max-width: 50%;
+  height: auto;
+  border-radius: 50%;
+}
+
