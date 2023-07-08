@@ -2,46 +2,45 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
 }
-
 html {
   scroll-behavior:smooth
 }
 
 
+/* ~~~~~~~~~~~~~~~~~~~~~~~  nav  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 nav {
-  height: 80px;
+  height: 50px;
   width: 100%;
   top:0;
   position: fixed;
-  background: #546461;
+  background: #3d3d3d;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0rem calc((100vw - 1300px)/2);
 }
-
-
-
 nav a {
   text-decoration: none;
   font-size: 1rem;
   font-weight: bold;
-  color: #111D13;
+  color: #dadada;
   padding: 0rem 1.5rem;
 }
-
-
-
+a:hover{
+  color:white;
+  text-shadow: 2px 2px black;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~  main  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .main-container {
-  margin-top: 80px;
+  margin-top: 50px;
   display: grid;
   grid-template-columns: 1fr ;
   height:95vh;
 }
-
+/* ~~~~~~~~~~~~~~~~~~~~~~~  intro  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .intro {
   width: auto;
   height: 100vh;
@@ -55,35 +54,85 @@ nav a {
   color: #111D13;
   padding: 0 2rem;
 }
-
-h1  {
-  margin-top: -40vh;
-  margin-bottom: 1rem;
-  font-size: 5rem;
-  align-self: center;
-}
-
-h2 {
-  margin-bottom: 1rem;
-  font-size: 5rem;
-  align-self: center;
-}
-
-h3 {
-  margin-bottom: 1rem;
-  font-size: 5rem;
-  align-self: center;
-}
-
-
-
 .intro p {
   margin-bottom: 2rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   line-height: 1.5;
   align-self: center;
   justify-self: center;
 }
+.social {
+  align-self: center;
+}
+.social li a { color: #E6EFEC; }
+li {
+  display: inline;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~  about  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.about {
+  background: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#aboutp {
+  align-self: center;
+  margin-left: 20px;
+  color: #e7e7e7;
+  font-size: 1.5rem;
+}
+#aboutp2 {
+  color: #e7e7e7;
+  font-size: 1.5rem;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~  contact  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.wrapper2-13 {
+  align-self: center;
+  display: grid;
+  grid-template-columns: 1fr 3fr ;
+  grid-auto-rows: minmax(auto, auto);
+  grid-gap: 1em;
+  margin-left: 20vw;
+  margin-right: 20vw;
+}
+.wrapper2-12 {
+  align-self: center;
+  display: grid;
+  grid-template-columns: 1fr 2fr ;
+  grid-auto-rows: 100px;
+  grid-gap: 1em;
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~  headers  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+h1  {
+  margin-bottom: 1rem;
+  font-size: 4rem;
+  align-self: center;
+}
+#myname {
+  margin-top: -40vh;
+  font-size: 6rem;
+}
+#aboutheader{
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: white;
+}
+#contactheader{
+  color: black;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~  subheaders  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+strong {
+  display: block;
+  font-size: 75%;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~  button  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 button {
   padding: 1rem 3rem;
@@ -94,17 +143,15 @@ button {
   cursor: pointer;
   border-radius: 50px;
 }
-
 button:hover {
   background: #415D43 ;
   color:#111D13;
 }
-
-
+/* ~~~~~~~~~~~~~~~~~~~~~~~  imgs  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .main-image {
-  align-self: center;
-  max-width: 50%;
+  max-width: 15vw;
   height: auto;
   border-radius: 50%;
+  border: 5px solid white;
 }
 
