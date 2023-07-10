@@ -9,9 +9,18 @@
 <body>
   <nav>
     <div class="nav-items">
-      <a href="#nametag">Home</a>
+      <li><a href="#nametag">Home</a></li>
       <a href="#abouttag">About</a>
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Qualifications</a>
+        <div class="dropdown-content">
+          <a href="#edutag">Education</a>
+          <a href="#exptag">Experience</a>
+          <a href="#projtag">Projects</a>
+        </div>
+      </li>
       <a href="#contacttag">Contact</a>
+
     </div>
   </nav>
   <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! main !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
@@ -24,17 +33,17 @@
       <ul class="social">
         <li>
           <a href="https://www.linkedin.com/in/danielsuh8205/"  target="_blank" >
-            <img src="img/lilogo.png" alt="my linkedin" width="50">
+            <img src="img/lilogo.svg" alt="my linkedin" width="50">
           </a>
         </li>
         <li>
           <a href="https://github.com/dsuh02/" target="_blank">
-            <img src="img/ghlogo.png" alt="my github" width="50" >
+            <img src="img/ghlogo.svg" alt="my github" width="50" >
           </a>
         </li>
         <li>
           <a href="mailto:dsuh8205@usc.edu" >
-            <img src="img/emlogo.png" alt="my email" width="50">
+            <img src="img/emlogo.svg" alt="my email" width="50">
           </a>
         </li>
       </ul>
@@ -137,7 +146,21 @@
           </div>
         </div>
       </div>
-      
+    </div>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~ education ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <div id="edutag"></div>
+    <div class="education">
+      <h1 id="eduheader">Education</h1>
+    </div>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~ experience ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <div id="exptag"></div>
+    <div class="experience">
+      <h1 id="expheader">Experience</h1>
+    </div>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~ projects ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <div id="projtag"></div>
+    <div class="projects">
+      <h1 id="projheader">Projects</h1>
     </div>
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~ contact ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
     <div id="contacttag"></div>

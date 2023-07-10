@@ -21,6 +21,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 0rem calc((100vw - 1300px)/2);
+  z-index: 99;
 }
 nav a {
   text-decoration: none;
@@ -54,6 +55,7 @@ nav a:hover{
   align-items: flex-start;
   color: #111D13;
   padding: 0 2rem;
+  align-items: center;
 }
 .intro p {
   margin-bottom: 2rem;
@@ -66,18 +68,26 @@ nav a:hover{
 .social {
   align-self: center;
 }
-.social li a { color: #E6EFEC; }
+.social li a img {
+  /* border: 2px solid rgb(0, 42, 209); */
+  filter: grayscale(1);
+  
+  /* mix-blend-mode:normal; */
+}
 li {
   display: inline;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 40px;
+  margin-right: 40px;
+  
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~  about  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .about {
+  padding-top: 50px;
+  padding-bottom: 50px;
   background: black;
   display:flex;
   flex-direction: column;
-  justify-content: center;
+  padding-bottom: 50px;
 }
 #aboutp {
   align-self: center;
@@ -121,6 +131,20 @@ li {
 .starcontainer {
   margin-top: 15px;
 }
+/* ~~~~~~~~~~~~~~~~~~~~~~~  Education ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.education {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background: #d1d1d1;
+  display:flex;
+  flex-direction: column;
+  padding-bottom: 50px;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~  Experience ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~  Projects ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~  contact  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
@@ -128,9 +152,11 @@ li {
 h1  {
   margin-bottom: 1rem;
   font-size: 4rem;
-  align-self: center;
+  text-align: center;
+  padding-top: 20px;
 }
 #myname {
+  text-align: center;
   margin-top: -40vh;
   font-size: 6rem;
 }
@@ -138,6 +164,15 @@ h1  {
   margin-top: 30px;
   margin-bottom: 10px;
   color: white;
+}
+#eduheader {
+  color: black;
+}
+#expheader {
+  color: black;
+}
+#projheader {
+  color: black;
 }
 #contactheader{
   color: black;
@@ -166,6 +201,35 @@ strong {
 }
 a {
   text-decoration: none;
+}
+li.dropdown {
+  display: inline-block;
+  padding-bottom: 20px;
+  margin-bottom: -20px;
+
+}
+.dropdown-content {
+  margin-top: 14.5px;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px black;
+  z-index: 1;
+}
+.dropdown-content a {
+  color: #3d3d3d;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.dropdown-content a:hover {
+  color: black;
+  text-shadow:  .5px .5px .5px grey;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~  imgs  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -222,5 +286,16 @@ a {
   li {
     margin-left: 20px;
     margin-right: 20px;
+  }
+  nav a {
+    padding: 0rem .8rem;
+  }
+}
+
+@media screen and (max-height:850px) {
+  #myname {
+    text-align: center;
+    margin-top: -40vh;
+    font-size: 4rem;
   }
 }
