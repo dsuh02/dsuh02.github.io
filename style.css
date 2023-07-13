@@ -68,17 +68,14 @@ nav a:hover{
 .social {
   align-self: center;
 }
+
 .social li a img {
-  /* border: 2px solid rgb(0, 42, 209); */
-  filter: grayscale(1);
-  
-  /* mix-blend-mode:normal; */
+  width: 50px;
 }
 li {
   display: inline;
   margin-left: 40px;
   margin-right: 40px;
-  
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~  about  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .about {
@@ -295,7 +292,15 @@ li.dropdown {
 @media screen and (max-height:850px) {
   #myname {
     text-align: center;
-    margin-top: -40vh;
+    margin-top: -55vh;
     font-size: 4rem;
   }
+  
+}
+@media screen and (max-height:960px) {
+    #myname {
+      text-align: center;
+      margin-top: -55vh;
+      font-size: 4rem;
+    }
 }
