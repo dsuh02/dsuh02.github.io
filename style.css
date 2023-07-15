@@ -137,7 +137,32 @@ li {
   flex-direction: column;
   padding-bottom: 50px;
 }
-
+.education img {
+  margin-top: 20px;
+}
+.wrapper2-112 {
+  align-self: center;
+  display: grid;
+  grid-template-columns: 1fr 2fr 4fr ;
+  grid-auto-rows: minmax(auto, auto);
+  grid-gap: 1em;
+  margin-left: 20vw;
+  margin-right: 20vw;
+  margin-bottom: 50px;
+}
+#edup1 {
+  text-align: right;
+  margin-right: 20px;
+  color: #151515;
+  font-size: 1.5rem;
+}
+#edup2 {
+  /* border: 2px solid yellow; */
+  padding-top: 5px;
+  text-align: left;
+  color: #272727;
+  font-size: 1.2rem;
+}
 /* ~~~~~~~~~~~~~~~~~~~~~~~  Experience ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~  Projects ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -261,6 +286,10 @@ li.dropdown {
     margin-left: 10vw;
     margin-right: 10vw;
   }
+  .wrapper2-112 {
+    margin-left: 10vw;
+    margin-right: 10vw;
+  }
 }
 @media screen and (max-width:850px) {
   .wrapper2-13 {
@@ -272,13 +301,19 @@ li.dropdown {
     grid-template-columns: 1fr;
     
   }
+  .wrapper2-112 {
+    grid-template-columns: 1fr;
+  }
   .main-image {
     justify-self: center;
   }
+  img {
+    justify-self: center
+  }
   #myname {
-    margin-top: -50vh;
-    font-size: 5.5rem;
     text-align: center;
+    margin-top: -55vh;
+    font-size: 4rem;
   }
   li {
     margin-left: 20px;
@@ -287,15 +322,9 @@ li.dropdown {
   nav a {
     padding: 0rem .8rem;
   }
-}
-
-@media screen and (max-height:850px) {
-  #myname {
-    text-align: center;
-    margin-top: -55vh;
-    font-size: 4rem;
+  #edup1 {
+    text-align: left;
   }
-  
 }
 @media screen and (max-height:960px) {
     #myname {
