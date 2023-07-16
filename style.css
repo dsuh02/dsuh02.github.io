@@ -153,19 +153,45 @@ li {
 #edup1 {
   text-align: right;
   margin-right: 20px;
-  color: #151515;
+  color: #272727;
   font-size: 1.5rem;
 }
 #edup2 {
-  /* border: 2px solid yellow; */
   padding-top: 5px;
   text-align: left;
   color: #272727;
   font-size: 1.2rem;
 }
+#edup3 {
+  text-align: center;
+  color: #272727;
+  font-size: 1.2rem;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~  Projects ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.wrapper3-111 {
+  display: grid;
+  grid-template-columns: 400px 400px 400px;
+  grid-template-rows: 400px;
+  justify-content: space-evenly;
+  justify-items: center;
+  align-content: space-evenly;
+  align-items: center;
+  border: 2px solid yellow;
+}
+.wrapper3-111 .box {
+  border: 2px solid red;
+  overflow:hidden;
+}
+.wrapper3-111 .box a {
+  border: 2px solid blue;
+}
+.wrapper3-111 .box a img{
+  display: block;
+  width: 400px;
+  height: auto;
+}
 /* ~~~~~~~~~~~~~~~~~~~~~~~  Experience ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~  Projects ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~  contact  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
