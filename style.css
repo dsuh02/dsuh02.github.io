@@ -171,24 +171,16 @@ li {
 .wrapper3-111 {
   display: grid;
   grid-template-columns: 400px 400px 400px;
-  grid-template-rows: 400px;
-  justify-content: space-evenly;
-  justify-items: center;
-  align-content: space-evenly;
-  align-items: center;
+  grid-template-rows: auto;
+  justify-content:center;
+  align-content: center;
   border: 2px solid yellow;
 }
-.wrapper3-111 .box {
-  border: 2px solid red;
-  overflow:hidden;
-}
-.wrapper3-111 .box a {
-  border: 2px solid blue;
-}
+
 .wrapper3-111 .box a img{
-  display: block;
   width: 400px;
   height: auto;
+  vertical-align: bottom;
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~  Experience ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
