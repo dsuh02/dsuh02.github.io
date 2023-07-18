@@ -174,13 +174,21 @@ li {
   grid-template-rows: auto;
   justify-content:center;
   align-content: center;
-  border: 2px solid yellow;
 }
 
 .wrapper3-111 .box a img{
   width: 400px;
   height: auto;
   vertical-align: bottom;
+}
+
+.wrapper3-111 .box{
+  #ch:hover{
+    img{
+      opacity: .5;
+    }
+    
+  }
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~  Experience ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -298,6 +306,18 @@ li.dropdown {
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~  page resize  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@media screen and (max-width:1300px) {
+  .wrapper3-111 {
+    grid-template-columns: 1fr 1fr;
+    justify-content:center;
+    align-content: center;
+    .box{
+      align-self: center;
+      justify-self: center;
+      
+    }
+  }
+}
 @media screen and (max-width:1100px) {
   .wrapper2-21 {
     grid-template-columns: 1fr 1fr;
@@ -307,6 +327,13 @@ li.dropdown {
   .wrapper2-112 {
     margin-left: 10vw;
     margin-right: 10vw;
+  }
+}
+@media screen and (max-height:960px) {
+  #myname {
+    text-align: center;
+    margin-top: -55vh;
+    font-size: 4rem;
   }
 }
 @media screen and (max-width:850px) {
@@ -322,6 +349,16 @@ li.dropdown {
   .wrapper2-112 {
     grid-template-columns: 1fr;
   }
+  .wrapper3-111 {
+    grid-template-columns: 1fr;
+    justify-content:center;
+    align-content: center;
+  }
+
+  .wrapper3-111 .box {
+    justify-self: center;
+  }
+
   .main-image {
     justify-self: center;
   }
@@ -343,11 +380,4 @@ li.dropdown {
   #edup1 {
     text-align: left;
   }
-}
-@media screen and (max-height:960px) {
-    #myname {
-      text-align: center;
-      margin-top: -55vh;
-      font-size: 4rem;
-    }
 }
