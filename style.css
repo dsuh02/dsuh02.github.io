@@ -135,7 +135,7 @@ li {
   background: #d1d1d1;
   display:flex;
   flex-direction: column;
-  padding-bottom: 50px;
+  padding-bottom: 100px;
 }
 .education img {
   margin-top: 20px;
@@ -148,26 +148,38 @@ li {
   grid-gap: 1em;
   margin-left: 20vw;
   margin-right: 20vw;
-  margin-bottom: 50px;
 }
 #edup1 {
   text-align: right;
   margin-right: 20px;
   color: #272727;
   font-size: 1.5rem;
+  align-self: center;
 }
 #edup2 {
   padding-top: 5px;
   text-align: left;
   color: #272727;
   font-size: 1.2rem;
+  align-self: center;
 }
 #edup3 {
-  text-align: center;
+  align-self: center;
   color: #272727;
   font-size: 1.2rem;
 }
+#edup3 li {
+  display: block;
+  list-style-type: circle;
+  list-style-position: outside;
+}
+#honorsh1 {
+  padding-top: 30px;
+}
 /* ~~~~~~~~~~~~~~~~~~~~~~~  Projects ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#projheader {
+  padding-top: 30px;
+}
 .wrapper3-111 {
   display: grid;
   grid-template-columns: 400px 400px 400px;
@@ -182,14 +194,68 @@ li {
   vertical-align: bottom;
 }
 
-.wrapper3-111 .box{
-  #ch:hover{
-    img{
-      opacity: .5;
-    }
-    
-  }
+#ch a img:hover{
+  opacity: .5;
 }
+
+.projectbox {
+  width: 400px;
+  height: 400px;
+  transition: .3s;
+  display:block;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+}
+.projectbox h1{
+  padding-top: 100px;
+  opacity: 0;
+  transform: scale(0);
+  transition: .8s;
+  font-size: 2rem;
+  color: white;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.projectbox p{
+  opacity: 0;
+  transform: scale(0);
+  transition: .8s;
+  font-size: 1.3rem;
+  color: white;
+  text-align: center;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.projectbox:hover{
+  box-shadow: 0 0 0 200px rgba(0,0,0,.9) inset;
+}
+.projectbox:hover h1{
+  opacity: 1;
+  transform: scale(1);
+}
+.projectbox:hover p{
+  opacity: 1;
+  transform: scale(1);
+}
+
+#chproj {
+  background-image: url(img/chlogo.jpg);
+}
+#sb9 {
+  background-image: url(img/sb9.jpg);
+}
+#agendaid {
+  background-image: url(img/agendaid.jpg);
+}
+#snake {
+  background-image: url(img/snake.png);
+}
+#site {
+  background-image: url(img/dssite.PNG);
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~  Experience ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
@@ -370,7 +436,7 @@ li.dropdown {
     margin-top: -55vh;
     font-size: 4rem;
   }
-  li {
+  .nav li {
     margin-left: 20px;
     margin-right: 20px;
   }
