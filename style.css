@@ -180,12 +180,18 @@ li {
 #projheader {
   padding-top: 30px;
 }
+.projects {
+  display: flex;
+  flex-direction: column;
+}
 .wrapper3-111 {
-  display: grid;
-  grid-template-columns: 400px 400px 400px;
-  grid-template-rows: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 15vw;
+  margin-right: 15vw;
   justify-content:center;
-  align-content: center;
+  align-content: space-around;
 }
 
 .wrapper3-111 .box a img{
@@ -201,22 +207,23 @@ li {
 .projectbox {
   width: 400px;
   height: 400px;
-  transition: .3s;
-  display:block;
+  transition: .4s;
+  display:flex;
+  flex-direction: column;
   justify-content: center;
   justify-items: center;
+  align-self: center;
   align-items: center;
   align-content: center;
   background-position: center;
   background-size: cover;
-  cursor: pointer;
 
 }
 .projectbox h1{
-  padding-top: 100px;
+  margin-top: -30px;
   opacity: 0;
   transform: scale(0);
-  transition: .8s;
+  transition: .4s;
   font-size: 2rem;
   color: white;
   padding-left: 30px;
@@ -225,7 +232,7 @@ li {
 .projectbox p{
   opacity: 0;
   transform: scale(0);
-  transition: .8s;
+  transition: .6s;
   font-size: 1.3rem;
   color: white;
   text-align: center;
@@ -235,9 +242,13 @@ li {
 .projectbox a{
   opacity: 0;
   transform: scale(0);
-  transition: .8s;
+  transition-duration: .9s;
+  padding: 4px 12px;
+  margin-top: 10px;
+  border: 2px solid white;
+  color: #e7e7e7;
+  text-decoration: none;
   font-size: 1.3rem;
-  color: white;
 }
 .projectbox:hover{
   box-shadow: 0 0 0 200px rgba(0,0,0,.9) inset;
@@ -253,6 +264,17 @@ li {
 .projectbox:hover  a{
   opacity: 1;
   transform: scale(1);
+}
+
+#projol1 {
+  align-self: center;
+  color: #272727;
+  font-size: 1.2rem;
+}
+#projol1 li {
+  display: block;
+  list-style-type: circle;
+  list-style-position: outside;
 }
 
 
@@ -390,14 +412,8 @@ li.dropdown {
 /* ~~~~~~~~~~~~~~~~~~~~~~~  page resize  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 @media screen and (max-width:1300px) {
   .wrapper3-111 {
-    grid-template-columns: 1fr 1fr;
-    justify-content:center;
-    align-content: center;
-    .box{
-      align-self: center;
-      justify-self: center;
-      
-    }
+    margin-left: 5vw;
+    margin-right: 5vw;
   }
 }
 @media screen and (max-width:1100px) {
@@ -410,12 +426,9 @@ li.dropdown {
     margin-left: 10vw;
     margin-right: 10vw;
   }
-}
-@media screen and (max-height:960px) {
-  #myname {
-    text-align: center;
-    margin-top: -55vh;
-    font-size: 4rem;
+  .wrapper3-111 {
+    margin-left: 0vw;
+    margin-right: 0vw;
   }
 }
 @media screen and (max-width:850px) {
@@ -431,16 +444,6 @@ li.dropdown {
   .wrapper2-112 {
     grid-template-columns: 1fr;
   }
-  .wrapper3-111 {
-    grid-template-columns: 1fr;
-    justify-content:center;
-    align-content: center;
-  }
-
-  .wrapper3-111 .box {
-    justify-self: center;
-  }
-
   .main-image {
     justify-self: center;
   }
@@ -464,6 +467,14 @@ li.dropdown {
   }
 }
 
+
+@media screen and (max-height:960px) {
+  #myname {
+    text-align: center;
+    margin-top: -55vh;
+    font-size: 4rem;
+  }
+}
 /* ~~~~~~~~~~~~~~~~~~~~~~~  MODALS  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /* 
   EDITED FROM
@@ -560,12 +571,4 @@ animation
 @keyframes fade{
   0%{opacity: 0;}
   100%{opacity: 1;}
-}
-.open-popup{
-  color: #e7e7e7;
-  text-decoration: none;
-  border: 1px solid;
-  position: absolute;
-  align-self: center;
-  justify-self: center;
 }
