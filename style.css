@@ -9,7 +9,6 @@ html {
   scroll-behavior:smooth
 }
 
-
 /* ~~~~~~~~~~~~~~~~~~~~~~~  nav  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 nav {
   height: 50px;
@@ -313,8 +312,13 @@ nav a:hover{
 /* ~~~~~~~~~~~~~~~~~~~~~~~  contact  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .contact {
   background-color: #3d3d3d;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 50px;
 }
-
+.contact > * > * > *{
+  filter: invert(.8);
+}
 /* ~~~~~~~~~~~~~~~~~~~~~~~  headers  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 h1  {
   margin-bottom: 1rem;
@@ -341,7 +345,8 @@ h1  {
   color: black;
 }
 #contactheader{
-  color: black;
+  color: #dadada;
+  margin-bottom: 40px;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~  subheaders  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -596,20 +601,24 @@ li.dropdown {
   display: flex;
   flex-direction: column;
   align-items: center;
-  > h1 {
-    font-size: 3em;
-  }
-  > img {
-    align-self: center;
-    width:  30%;
-  }
-  > p {
-    text-align: center;
-    font-size: 1.2em;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
+  
+  
+  
 }
+.popup__content > h1 {
+  font-size: 3em;
+}
+.popup__content > img {
+  align-self: center;
+  width:  30%;
+}
+.popup__content > p {
+  text-align: center;
+  font-size: 1.2em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .screen-reader {
   color: black;
 }
