@@ -41,8 +41,17 @@ python -m http.server 8000
   An inline script in `<head>` applies the saved value before first paint so the
   wrong theme never flashes. Keyboard shortcut is `t`.
 - **JavaScript is optional.** The page is fully readable with `js/site.js`
-  blocked. Reveal animations, counters, and the scrollspy are enhancements; the
-  content and every link work without them.
+  blocked. The scrollspy, the scroll-progress bar, and the command palette are
+  enhancements; the content and every link work without them.
+- **Nothing is hidden behind JavaScript.** An earlier version faded sections in
+  on scroll, which meant every word on the page depended on an
+  `IntersectionObserver` callback firing. Loading `/#projects` rendered a blank
+  viewport. There is no reveal-on-scroll now, and there should not be one again.
+  Same reasoning killed the count-up number animation: it overwrote correct
+  markup with a tween starting at zero.
+- **The command palette is convenience, not navigation.** `Ctrl`/`Cmd` + `K`.
+  Every destination in it is also a plain link or button elsewhere on the page,
+  so nothing is reachable *only* through it.
 - **`prefers-reduced-motion` is respected** for real. Animations collapse and
   counters jump straight to their final value.
 - **No external requests.** No CDN fonts, no analytics, no third-party scripts.

@@ -59,6 +59,8 @@
   <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 13a8.1 8.1 0 0 1-10-10 8 8 0 1 0 10 10z"/></symbol>
   <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></g></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></g></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 9h10v12H9zM15 5H5v12h2"/></symbol>
 </svg>
 
 <!-- ============================== nav ============================== -->
@@ -77,6 +79,9 @@
       <svg><use href="#i-menu"></use></svg>
     </button>
     <div class="nav__util">
+      <button class="iconbtn" id="palBtn" aria-label="Open command palette" title="Jump to anything (Ctrl or Cmd + K)">
+        <svg><use href="#i-search"></use></svg>
+      </button>
       <button class="iconbtn" id="themeBtn" aria-label="Toggle light and dark theme" title="Toggle theme (t)">
         <svg class="ico-moon"><use href="#i-moon"></use></svg>
         <svg class="ico-sun"><use href="#i-sun"></use></svg>
@@ -122,6 +127,12 @@
         <svg><use href="#i-mail"></use></svg>Email
       </a>
     </div>
+
+    <dl class="now">
+      <div><dt class="mono">building</dt><dd>inventory and pricing models in our client-facing portal</dd></div>
+      <div><dt class="mono">shipping</dt><dd>retrieval and reliability work on a multi-agent platform</dd></div>
+      <div><dt class="mono">tinkering</dt><dd>a touch panel on my wall that runs the house, on Postgres and no dependencies</dd></div>
+    </dl>
   </div>
 </section>
 
@@ -200,6 +211,22 @@
       </article>
 
       <article class="card">
+        <p class="card__kicker mono">optimization</p>
+        <h3>An optimizer that has to argue with a chemist</h3>
+        <p>
+          I build the experiment design side of the platform: Gaussian process models over a constrained mixture space,
+          acquisition functions that pick which experiment is worth running next, and convergence tracking across
+          iterations. The engineering problem is less about the math than about trust. A scientist will not run a
+          suggested experiment because a model emitted a number, so most of the work is surfacing uncertainty, the
+          variables that drove a recommendation, and the prior results it leaned on.
+        </p>
+        <div class="tags">
+          <span class="tag">Bayesian optimization</span><span class="tag">GPyTorch</span><span class="tag">scikit-learn</span>
+          <span class="tag">SciPy</span><span class="tag">constrained mixtures</span>
+        </div>
+      </article>
+
+      <article class="card">
         <p class="card__kicker mono">production</p>
         <h3>Keeping a running system honest</h3>
         <p>
@@ -249,6 +276,35 @@
         </div>
       </article>
 
+    </div>
+
+    <p class="alsohead mono">also on my plate</p>
+    <div class="also">
+      <div class="also__item">
+        <h4>Multi-tenant authorization</h4>
+        <p>
+          One scope object as the single source of truth for what a caller may read, derived server-side so a client
+          payload can never assert its own ownership. Enforced identically across routes, services, agent tools, and
+          vector search, because an index cannot be an access boundary by itself.
+        </p>
+      </div>
+      <div class="also__item">
+        <h4>Internal tooling nobody chooses to use</h4>
+        <p>
+          A Flask application our scientists live in, spanning dozens of feature modules: instrument data ingestion from
+          chromatography and spectroscopy runs, plate layout and visualization, and chemical property prediction.
+          Internal tools are judged differently. The bar is never wasting somebody's afternoon.
+        </p>
+      </div>
+      <div class="also__item">
+        <h4>Tests that refuse to lie</h4>
+        <p>
+          Took a build pipeline from red to green across type checking, both test suites, and linting, with database
+          tests on a least-privilege role that skips safely rather than failing when the runner cannot reach the server.
+          Favorite trick: encoding known-but-unfixed bugs as strict expected failures, so fixing one flips the suite to a
+          hard error instead of quietly passing.
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -387,6 +443,23 @@ static/js/     <b>grid engine, schema-driven settings, widget implementations</b
           <p>
             Snake, 2048, and Tetris built from the Graphics and KeyListener classes up, with full play cycles and no
             interruption between rounds. Where I learned that a game loop is just a scheduler with opinions.
+            <a class="tlink" href="https://github.com/dsuh02?tab=repositories" target="_blank" rel="noopener" style="margin-left:.4rem">Repos<svg><use href="#i-ext"></use></svg></a>
+          </p>
+        </div>
+        <div class="mini">
+          <h4>Embedded systems in C <span>&middot; USC EE109</span></h4>
+          <p>
+            Microcontroller projects down at the register level: timers, interrupts, ADC reads, SPI and I2C peripherals,
+            and the debugging discipline that comes from having no print statement to fall back on.
+            <a class="tlink" href="https://github.com/dsuh02/EE109-Projects" target="_blank" rel="noopener" style="margin-left:.4rem">Repo<svg><use href="#i-ext"></use></svg></a>
+          </p>
+        </div>
+        <div class="mini">
+          <h4>Data structures from scratch in C++ <span>&middot; USC CSCI 104</span></h4>
+          <p>
+            Hash tables, heaps, balanced trees, and graph algorithms implemented rather than imported. Still the single
+            most useful course I took, because it is the reason I reach for the right container without thinking about it.
+            <a class="tlink" href="https://github.com/dsuh02/CSCI104-Projects" target="_blank" rel="noopener" style="margin-left:.4rem">Repo<svg><use href="#i-ext"></use></svg></a>
           </p>
         </div>
         <div class="mini">
@@ -529,6 +602,7 @@ static/js/     <b>grid engine, schema-driven settings, widget implementations</b
     </p>
     <div class="cta">
       <a class="btn btn--primary" href="mailto:dsuh3508@gmail.com"><svg><use href="#i-mail"></use></svg>dsuh3508@gmail.com</a>
+      <button class="btn" id="copyBtn" type="button"><svg><use href="#i-copy"></use></svg>Copy address</button>
       <a class="btn" href="https://www.linkedin.com/in/danielsuh8205/" target="_blank" rel="noopener"><svg><use href="#i-li"></use></svg>LinkedIn</a>
       <a class="btn" href="https://github.com/dsuh02" target="_blank" rel="noopener"><svg><use href="#i-gh"></use></svg>GitHub</a>
     </div>
@@ -541,9 +615,27 @@ static/js/     <b>grid engine, schema-driven settings, widget implementations</b
   <div class="wrap foot__in">
     <span>&copy; <span id="yr">2026</span> Daniel Suh</span>
     <span>hand-written HTML, CSS, and JS <b>/</b> no framework, no build step <b>/</b> deployed by <code>git push</code></span>
-    <span class="sp">press <b>t</b> for theme</span>
+    <span class="sp"><b>ctrl</b> or <b>cmd</b> + <b>k</b> to jump anywhere <b>/</b> <b>t</b> for theme</span>
   </div>
 </footer>
+
+<div class="prog" id="prog" aria-hidden="true"></div>
+
+<!-- Command palette. Pure enhancement: it is inert without JavaScript, and
+     every destination in it is also a plain link somewhere on the page. -->
+<div class="pal" id="pal" role="dialog" aria-modal="true" aria-label="Command palette">
+  <div class="pal__scrim" data-pal-close></div>
+  <div class="pal__box">
+    <input class="pal__in" id="palIn" type="text" placeholder="Jump to, or type a command" autocomplete="off"
+           spellcheck="false" aria-controls="palList" aria-autocomplete="list">
+    <div class="pal__list" id="palList" role="listbox" aria-label="Results"></div>
+    <div class="pal__hint">
+      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navigate</span>
+      <span><kbd>enter</kbd> select</span>
+      <span><kbd>esc</kbd> close</span>
+    </div>
+  </div>
+</div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="js/site.js" defer></script>
