@@ -1,384 +1,551 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daniel's Web Profile</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="back.js"></script>
-  <link rel="icon" href="img/ds.png" style="filter: invert(1);">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daniel Suh &middot; Backend &amp; Full-Stack Engineer</title>
+<meta name="description" content="Backend and full-stack engineer at Persist AI Formulations. Postgres and pgvector data platforms, FastAPI services, React interfaces, and the infrastructure under a multi-agent LLM product.">
+<meta name="author" content="Daniel Suh">
+<meta name="theme-color" content="#0a0c10" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)">
+<link rel="canonical" href="https://dsuh02.github.io/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dsuh02.github.io/">
+<meta property="og:title" content="Daniel Suh &middot; Backend &amp; Full-Stack Engineer">
+<meta property="og:description" content="Postgres and pgvector data platforms, FastAPI services, and the infrastructure under a multi-agent LLM product.">
+<meta property="og:image" content="https://dsuh02.github.io/img/headshot.jpg">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0c10'/%3E%3Ctext x='16' y='22' font-family='ui-monospace,monospace' font-size='15' font-weight='700' fill='%23b8f24a' text-anchor='middle'%3Eds%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/site.css">
+
+<!-- Runs before first paint so a saved theme never flashes the wrong palette.
+     Nothing on the page is hidden behind JavaScript, so if this never runs the
+     only consequence is that the system theme wins. -->
+<script>
+  try {
+    var t = localStorage.getItem("theme");
+    if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Daniel Suh",
+  "jobTitle": "Software Engineer",
+  "worksFor": { "@type": "Organization", "name": "Persist AI Formulations" },
+  "url": "https://dsuh02.github.io/",
+  "email": "mailto:dsuh3508@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Sacramento", "addressRegion": "CA", "addressCountry": "US" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of Southern California" },
+  "sameAs": ["https://github.com/dsuh02", "https://www.linkedin.com/in/danielsuh8205/"],
+  "knowsAbout": ["PostgreSQL","pgvector","FastAPI","Python","TypeScript","React","SQLAlchemy","Azure","Retrieval-augmented generation","OPC UA"]
+}
+</script>
 </head>
 <body>
-  <nav>
-    <div class="nav-items">
-      <a href="#nametag">Home</a>
-      <a href="#abouttag">About</a>
-      <li class="dropdown">
-        <a href="javascript:void(0)" class="dropbtn">Qualifications</a>
-        <div class="dropdown-content">
-          <a href="#edutag">Education</a>
-          <a href="#projtag">Projects</a>
-          <a href="#exptag">Experience</a>
-        </div>
-      </li>
-      <a href="#contacttag">Contact</a>
+<a class="skip" href="#work">Skip to content</a>
 
-    </div>
-  </nav>
-  <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! main !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-  <section class="main-container">
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ intro ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <div id="nametag"></div>
-    <div class="intro">
-      <h1 id="myname">Daniel Suh</h1>
-      <p>Computer Science @ USC Viterbi School of Engineering</p>
-      <ul class="social">
-        <li>
-          <a href="https://www.linkedin.com/in/danielsuh8205/"  target="_blank" >
-            <img src="img/lilogo.svg" alt="my linkedin">
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/dsuh02/" target="_blank">
-            <img src="img/ghlogo.svg" alt="my github">
-          </a>
-        </li>
-        <li>
-          <a href="mailto:dsuh8205@usc.edu">
-            <img src="img/emlogo.svg" alt="my email">
-          </a>
-        </li>
-      </ul>
-    </div>
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~ about ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    
-    <div id="abouttag"></div>
-    <div class="about">
-      <!-- <svg class="tpt" id="tp1" xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 19.36 2501 162.14">
-        <path id="path1" fill="red" stroke="black" stroke-width="1" d="M 0.00,181.00            C 0.00,181.00 2500.00,181.00 2500.00,181.00              2500.00,181.00 2493.00,100.50 2337.00,94.50              2181.00,88.50 2181.00,159.00 2056.50,138.00              1932.00,117.00 1941.00,49.50 1791.00,43.50              1641.00,37.50 1597.50,112.50 1507.50,117.00              1417.50,121.50 1360.50,70.50 1231.50,79.50              1102.50,88.50 1065.00,0.00 964.50,24.00              864.00,48.00 877.50,102.00 756.00,114.00              634.50,126.00 565.50,52.50 457.50,61.50              349.50,70.50 327.00,114.00 183.00,108.00              39.00,102.00 0.00,181.00 0.00,181.00 Z"/>
-      </svg> -->
+<!-- icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-gh" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.55v-1.94c-3.2.69-3.88-1.54-3.88-1.54-.52-1.34-1.28-1.7-1.28-1.7-1.05-.71.08-.7.08-.7 1.16.09 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.71 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.12 3.06.74.81 1.19 1.84 1.19 3.1 0 4.44-2.7 5.42-5.27 5.7.42.36.79 1.07.79 2.16v3.2c0 .3.21.66.8.55A11.5 11.5 0 0 0 23.5 12A11.5 11.5 0 0 0 12 .5z"/></symbol>
+  <symbol id="i-li" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 5.5a2.44 2.44 0 1 1-4.88 0 2.44 2.44 0 0 1 4.88 0zM2.4 21.6h4.3V8.7H2.4zM9.5 8.7h4.12v1.77h.06c.57-1.03 1.97-2.12 4.06-2.12 4.34 0 5.14 2.7 5.14 6.22v7.03h-4.3v-6.23c0-1.49-.27-3.2-2.06-3.2-1.8 0-2.73 1.44-2.73 3.11v6.32H9.5z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 6h18v12H3zM3 7l9 6 9-6"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zm0 0v5h5M9 13h6M9 17h4"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 4h6v6M20 4l-8 8M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 13a8.1 8.1 0 0 1-10-10 8 8 0 1 0 10 10z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></g></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></symbol>
+</svg>
 
-      <h1 id="aboutheader">About Me</h1>
-      <div class="wrapper2-13">
-        <img src="img/headshot1.png" alt="That's me!" class="main-image" >
-        <p id="aboutp">
-          In my final year of academia, I bring a robust portfolio of projects from dynamic web applications to complex video games. With a particular strength in full-stack development, I have successfully led projects integrating advanced technologies like OpenAI and Google APIs, enhancing both the UI/UX and backend systems. with a strong commitment to ethics and representation within the software development sector.
+<!-- ============================== nav ============================== -->
+<header class="nav" id="nav">
+  <div class="wrap nav__in" id="navIn">
+    <a class="mark" href="#top" aria-label="Daniel Suh, back to top">ds</a>
+    <nav class="nav__links" id="navLinks" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#stack">Stack</a>
+      <a href="#writing">Writing</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="iconbtn navtoggle" id="navBtn" aria-label="Open menu" aria-expanded="false">
+      <svg><use href="#i-menu"></use></svg>
+    </button>
+    <div class="nav__util">
+      <button class="iconbtn" id="themeBtn" aria-label="Toggle light and dark theme" title="Toggle theme (t)">
+        <svg class="ico-moon"><use href="#i-moon"></use></svg>
+        <svg class="ico-sun"><use href="#i-sun"></use></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============================== hero ============================== -->
+<section class="hero">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__grid"></div>
+    <div class="hero__glow hero__glow--a"></div>
+    <div class="hero__glow hero__glow--b"></div>
+  </div>
+  <div class="wrap">
+    <p class="hero__status mono"><span class="dot"></span>Sacramento, CA &nbsp;/&nbsp; Software Engineer at Persist AI Formulations</p>
+    <h1>Daniel Suh</h1>
+    <p class="hero__tag">I build <b>backend systems</b>: Postgres data platforms, FastAPI services, and the
+      infrastructure under a multi-agent LLM product.</p>
+    <p class="hero__lede">
+      Most of my work lives in the unglamorous layer. Schema migrations, connection pools, index builds, and health
+      probes that tell the truth. Lately that layer happens to sit underneath LLM agents, which turns out to make the
+      boring parts matter more, not less.
+    </p>
+    <p class="hero__lede">
+      Computer science at USC before that. Somewhere in between: a hackathon, a solar-powered boat, and a wall panel
+      that runs my house.
+    </p>
+    <div class="cta">
+      <a class="btn btn--primary" href="assets/Daniel-Suh-Resume.pdf" target="_blank" rel="noopener">
+        <svg><use href="#i-doc"></use></svg>Resume
+      </a>
+      <a class="btn" href="https://github.com/dsuh02" target="_blank" rel="noopener">
+        <svg><use href="#i-gh"></use></svg>GitHub
+      </a>
+      <a class="btn" href="https://www.linkedin.com/in/danielsuh8205/" target="_blank" rel="noopener">
+        <svg><use href="#i-li"></use></svg>LinkedIn
+      </a>
+      <a class="btn" href="mailto:dsuh3508@gmail.com">
+        <svg><use href="#i-mail"></use></svg>Email
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== work ============================== -->
+<section class="sec sec--tint" id="work">
+  <div class="wrap">
+    <div class="sec__head">
+      <span class="sec__num mono">01 / work</span>
+      <h2>What I work on</h2>
+      <p>
+        I am on a small team at Persist AI Formulations building a multi-agent platform for pharmaceutical formulation,
+        along with the lab systems around it. The product is closed source, so this is the shape of the work rather than
+        the internals. Happy to go deeper in a conversation.
+      </p>
+    </div>
+
+    <div class="work">
+
+      <article class="card">
+        <p class="card__kicker mono">data platforms</p>
+        <h3>Consolidating a sprawling backend onto Postgres</h3>
+        <p>
+          Led the move from a scattered set of embedded databases and on-disk indexes onto a single PostgreSQL cluster
+          with pgvector. Schema design, migration tooling, and the cutover plan, plus the ongoing work that follows:
+          query performance, indexing strategy, and pooling that holds up under real concurrency.
         </p>
-      </div>
-      <h1 style="color: white;"><strong>My Skills</strong></h1>
-      <div class="wrapper2-21">
-        <div id="leftcol">
-          <p id="aboutp2"> <i>Here's what I'm confident in:</i> </p>
-          <div id="skillslist">
-            <p id="aboutp3">C/C++</p>
-            <div class="starcontainer">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-            </div>
-            <p id="aboutp3">Java</p>
-            <div class="starcontainer">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circempty-image" src="img/circempty.png" alt="emptycircle">
-            </div>
-            <p id="aboutp3">JS/CSS/HTML</p>
-            <div class="starcontainer">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circempty-image" src="img/circempty.png" alt="emptycircle">
-            </div>
-            <p id="aboutp3">Embedded Systems</p>
-            <div class="starcontainer">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circempty-image" src="img/circempty.png" alt="emptycircle">
-              <img class="circempty-image" src="img/circempty.png" alt="emptycircle">
-            </div>
-            <p id="aboutp3">Full-Stack Development</p>
-            <div class="starcontainer">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circ-image" src="img/circ.png" alt="circle">
-              <img class="circempty-image" src="img/circempty.png" alt="emptycircle">
-              <img class="circempty-image" src="img/circempty.png" alt="emptycircle">
-            </div>
+        <div class="tags">
+          <span class="tag">PostgreSQL</span><span class="tag">pgvector</span><span class="tag">SQLAlchemy</span>
+          <span class="tag">Alembic</span><span class="tag">schema migrations</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <p class="card__kicker mono">retrieval</p>
+        <h3>Search that has to earn its cutover</h3>
+        <p>
+          Built the retrieval layer our agents read from: document chunking, embedding pipelines, and two-stage vector
+          search that pairs approximate recall with an exact re-rank. My favorite part of this work is the discipline
+          around it. A retrieval change ships when offline evaluation says it is not a regression, not when it feels
+          better.
+        </p>
+        <div class="tags">
+          <span class="tag">pgvector</span><span class="tag">HNSW</span><span class="tag">IVFFlat</span>
+          <span class="tag">embeddings</span><span class="tag">offline evals</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <p class="card__kicker mono">performance</p>
+        <h3>Making slow things fast, usually by measuring first</h3>
+        <p>
+          A recurring thread in my work: replacing per-row loops with set-based SQL, finding the write path that was the
+          real bottleneck rather than the one I assumed, and choosing index types against the constraints of the machine
+          actually doing the building. The pattern is almost always the same. Profile, get surprised, then fix the thing
+          the profile pointed at.
+        </p>
+        <div class="tags">
+          <span class="tag">SQL</span><span class="tag">recursive CTEs</span><span class="tag">profiling</span>
+          <span class="tag">Postgres internals</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <p class="card__kicker mono">architecture</p>
+        <h3>A fleet of services, folded into one</h3>
+        <p>
+          Collapsed a set of HTTP microservices into a single FastAPI service that coordinates an orchestrator and a
+          group of specialist LLM agents over in-process tool calls. Fewer moving parts, no per-request network hops, and
+          a failing request that produces one stack trace instead of a distributed tracing exercise. The tradeoff is
+          real and worth naming: a single process means isolation is now my problem, not the network's.
+        </p>
+        <div class="tags">
+          <span class="tag">FastAPI</span><span class="tag">asyncio</span><span class="tag">LLM tool calling</span>
+          <span class="tag">multi-provider routing</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <p class="card__kicker mono">production</p>
+        <h3>Keeping a running system honest</h3>
+        <p>
+          A good share of my week goes to the behavior of software that is already deployed. Health checks that report
+          what is actually true rather than that startup finished. Resource lifetimes that survive long-lived streams and
+          slow upstream calls. And the class of accuracy bug that never shows up in a test suite, only in production
+          logs at two in the afternoon.
+        </p>
+        <div class="tags">
+          <span class="tag">observability</span><span class="tag">connection pooling</span><span class="tag">SSE</span>
+          <span class="tag">health checks</span><span class="tag">incident triage</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <p class="card__kicker mono">shipping</p>
+        <h3>Software that runs on someone else's infrastructure</h3>
+        <p>
+          Our product deploys into customer-controlled environments, which shapes a lot of decisions. Encryption at rest
+          for data on disk, cloud-native identity in place of long-lived credentials, model traffic that can be routed
+          through a customer's own cloud, and container builds that ship compiled artifacts. Good defaults matter more
+          when you are not the one operating the box.
+        </p>
+        <div class="tags">
+          <span class="tag">Azure</span><span class="tag">Managed Identity</span><span class="tag">Docker</span>
+          <span class="tag">applied cryptography</span><span class="tag">CI/CD</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <p class="card__kicker mono">full stack and hardware</p>
+        <h3>From the schema to the pipette</h3>
+        <p>
+          I own our lab information management system end to end: the Postgres schema and its append-only history model,
+          the FastAPI endpoints over it, and a React and TypeScript interface for inspecting what is physically where.
+          Underneath it sits the instrument layer, where I write the OPC UA servers, serial bridges, and schedulers that
+          move real hardware.
+        </p>
+        <p>
+          I also work on our client-facing portal, including the billing path, which is a genuinely interesting corner
+          of engineering. Charging money exactly once, even when the network disagrees with you, turns out to be a
+          transactions-and-idempotency problem rather than a business-logic one.
+        </p>
+        <div class="tags">
+          <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">FastAPI</span>
+          <span class="tag">OPC UA</span><span class="tag">Playwright</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================== projects ============================== -->
+<section class="sec" id="projects">
+  <div class="wrap">
+    <div class="sec__head">
+      <span class="sec__num mono">02 / projects</span>
+      <h2>Things I built because I wanted them to exist</h2>
+      <p>Mostly hardware that had to keep working after I stopped paying attention to it.</p>
+    </div>
+
+    <div class="grid2">
+
+      <article class="card card--feat">
+        <div class="card__top">
+          <div>
+            <p class="card__kicker mono">home infrastructure</p>
+            <h3>DigiCalender</h3>
           </div>
+          <span class="badge">active</span>
         </div>
-        <div id="rightcol">
-          <p id="aboutp2"><i>Very Honorable Mentions:</i> Python, x86-64 Assembly, MySQL, Flutter, Git, Electrical Engineering, MS Suite, Korean, French <br><br><br></p>
-          <div id="cvbutdiv">
-            <a id="cvbutton" href="assets/Daniel Suh Resume.pdf" target="_blank">Download CV</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~ education ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <div id="edutag"></div>
-    <div class="education">
-      <h1 id="eduheader">Education</h1>
-      <div class="wrapper2-112">
-        <img src="img/usclogo.png" alt="uscseal" style="justify-self: center; filter: grayscale(1); width:200px;">
-        <p id="edup1"><b>University of Southern California</b><sub> <i><br>May 2025</i></sub> </p> 
-        <p id="edup2">
-          <b>Relevant Courses:</b> Data Structures, Embedded Systems, Probability Theory, Algorithms/Theory of Computing, Video Game Programming, Cross-Platform App Development, Calculus III, Artificial Intelligence, Computer Systems, Building the High Tech Startup.  
+        <p>
+          A touch-wall hub for the house: configurable widgets on a fine-grained grid, with calendars, to-dos, weather,
+          and direct control of the Rokus, Govee plugs, and Samsung TVs on the network. It runs on an always-on Ubuntu
+          box driving a 1920x1080 HDMI touch panel, and comes up on boot with no desktop session.
         </p>
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-      </div>
-      <h1 id="honorsh1" style="color: black;"><strong>Honors/Certificates</strong></h1>
-      <ol id="edup3">
-        <li>- Programming Foundations: Databases </li>
-        <li>- CA State Seal Of Biliteracy - French </li>
-        <li>- AP Scholar with Honor </li>
-        <li>- FHS Math Academic Award </li>
-      </ol>
-    </div>
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~ projects ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <div id="projtag"></div>
-    <div class="projects">
-      <h1 id="projheader">Projects</h1>
-      <h1><strong><i>Some of the projects I have completed:</i></strong></h1>
-      <div class="wrapper3-111">
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~ WORKING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-        <div class="projectbox" id="emotify">
-          <h1>Emotify</h1>
-          <!-- Emotify -->
-          <p> </p>
-          <a href="#empopup-article" class="open-popup">Learn More</a>
-        </div>
-        <div class="projectbox" id="spotted">
-          <h1>Spotted</h1>
-          <!-- Spotted -->
-          <p> </p>
-          <a href="#sppopup-article" class="open-popup">Learn More</a>
-        </div>
-        <div class="projectbox" id="cppgames">
-          <h1>C++ Game Development</h1>
-          <!-- C++ Game Development -->
-          <p> </p>
-          <a href="#cpppopup-article" class="open-popup">Learn More</a>
-        </div>
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~ WORKING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-
-        <div class="projectbox" id="chproj">
-          <h1>CovidHacks</h1>
-          <!-- https://covidhacks2020.devpost.com/ -->
-          <p> Hosted a hackathon with a team of four with 110+ participants and gathered $9,400 in prizes.</p>
-          <a href="#chpopup-article" class="open-popup">Learn More</a>
-        </div>
-        <div class="projectbox" id="sb9">
-          <h1>SolarBoat9</h1>
-          <!-- solarboat -->
-          <p> Collaborated with a team to create a 16 ft long solar-powered fiberglass boat to compete in the SMUD-sponsored annual solar
-            regatta.</p>
-          <a href="#sb9popup-article" class="open-popup">Learn More</a>
-        </div>
-        <div class="projectbox" id="agendaid">
-          <h1>Agend-Aid</h1>
-          <!-- agendaid -->
-          <p> Created a prototype of an app that helps educators and other campus staff stay in sync.</p>
-          <a href="#aapopup-article" class="open-popup">Learn More</a>
-        </div>
-        <div class="projectbox" id="snake">
-          <h1>Java Projects: Snake, 2048, and more</h1>
-          <!-- snake -->
-          <p> A series of foundational projects where I created the front and back-end of several well-known computer games.</p>
-          <a href="#snakepopup-article" class="open-popup">Learn More</a>
-        </div>
-        <div class="projectbox" id="site">
-          <h1>Web Profile</h1>
-          <!-- site -->
-          <p> The site you are viewing right now! My foundation in learning front-end development.</p>
-        </div>
-      </div>
-      
-      <h1 style="margin-top: 40px;"><strong>Professional Communication</strong></h1>
-      <p id="projcomp">Samples of my written work: </p>
-      <ol id="projol1">
-        <li><a href="https://illumin.usc.edu/red-light-green-light/" target="_blank">- <u>"Red Light, Green Light" - USC Illumin Magazine Featured Article</u></a></li>
-        <li><a href="assets/VCE Article - Engineering Addiction.pdf" target="_blank">- <u>"Engineering Addiction" - USC Viterbi Conversations in Ethics Submission</u></a></li>
-        <li><a href="assets/Water Shortages Project.pdf" target="_blank">- <u>"Water Shortages in the Southwestern U.S."</u></a></li>
-      </ol>
-
-    </div>
-    
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~ experience ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <!--
-    <div id="exptag"></div>
-    <div class="experience">
-      <h1 id="expheader">Experience</h1>
-    </div>
-    -->
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~ contact ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <div id="contacttag"></div>
-    <div class="contact">
-      <h1 id="contactheader">Contact</h1>
-      <ul class="social">
-        <li>
-          <a href="https://www.linkedin.com/in/danielsuh8205/"  target="_blank" >
-            <img src="img/lilogo.svg" alt="my linkedin">
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/dsuh02/" target="_blank">
-            <img src="img/ghlogo.svg" alt="my github">
-          </a>
-        </li>
-        <li>
-          <a href="mailto:dsuh8205@usc.edu">
-            <img src="img/emlogo.svg" alt="my email">
-          </a>
-        </li>
-      </ul>
-
-    </div>
-  </section>
-
-  <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!! MODALS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-  <div id="chpopup-article" class="popup">
-    <div class="popup__container">
-      <a href="#projtag" class="popup__close">
-        <span class="screen-reader">X</span>
-      </a>  
-      <div class="popup__content">
-        <h1 class="popup__title r-title">CovidHacks</h1>
-        <img src="img/chlogo.jpg" alt="chlego">
-        <p>Covid-19 is a calamity that is affecting everyone, indiscriminate to age, nationality, or anything that divides us -- that's why CovidHacks was created. CovidHacks is a hackathon that aims to draw youth programming enthusiasts from all around the globe together to develop innovative solutions to the challenges caused by the COVID-19 experience. This event took place for 24 hours, and it was open to students of all skill levels. <br><br> Over these 24 hours, 3 different workshops were hosted for any participants who wished to attend: 
-          <br><i>
-          “Build a Cloud-Connected AR/VR App in 15 Minutes or Less” by EchoAR <br>
-          "Intro to Firebase Client” by STAC Programming <br>
-          “How to be Financially Literate” by FLEO</i>
+        <p>
+          The constraint that made it interesting: <b>no pip, no build step.</b> Python standard library plus
+          <code>psycopg</code> from apt. The host runs Python 3.14 where wheels are still patchy, and a wall display
+          that will not come up because a dependency failed to compile is worse than a hand-rolled router. So it has a
+          hand-rolled router, an SSE broadcaster, and a minimal RFC 6455 WebSocket client, because the Samsung TVs need
+          one and pip does not exist here.
         </p>
-        <div id="popup-wrapper" class="wrapper3-111">
-          <img src="img/chemb1.PNG" alt="chemb1">
-          <img src="img/chemb2.PNG" alt="chemb2">
-          <img src="img/chemb3.PNG" alt="chemb3">
-          <img src="img/chemb4.PNG" alt="chemb4">
-          <img src="img/chemb5.PNG" alt="chemb5">
+        <div class="tree">
+server.py      <b>HTTP server, hand-rolled router, JSON API, SSE stream</b>
+store.py       <b>PostgreSQL via psycopg3: calendar, dashboard, devices</b>
+hub.py         <b>live layer: SSE broadcaster, device poller, reminder ticker</b>
+devices/       <b>Roku ECP, Govee LAN + cloud, Samsung Tizen, SSDP discovery</b>
+static/js/     <b>grid engine, schema-driven settings, widget implementations</b>
         </div>
-        <p style="opacity: .8;"><i>Images above: Opening Ceremony, Sponsors List, Prizes List, Closing Ceremony, DEVPOST Page.</i></p>
-        <p>Over the 24 hours, 315 participants internationally submitted 54 projects. Of these participants, the 3 top teams as well as 2 other teams winning the EchoAR challenge and the Sashido Machine Learning challenge were showcased and awarded. Finally, we held a raffle with 7 prizes open to all participants. I was in charge of implenting a visual raffle system with front-end programming.</p>
+        <div class="metrics">
+          <span class="metric">Python stdlib only</span>
+          <span class="metric">Postgres 18</span>
+          <span class="metric">0 npm dependencies</span>
+        </div>
+        <div class="card__links">
+          <a class="tlink" href="https://github.com/dsuh02/digicalender" target="_blank" rel="noopener">
+            View repository<svg><use href="#i-ext"></use></svg>
+          </a>
+        </div>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">SSE</span>
+          <span class="tag">WebSockets</span><span class="tag">SSDP</span><span class="tag">systemd</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <p class="card__kicker mono">automotive</p>
+        <h3>Pi dash and reverse camera</h3>
+        <p>
+          An always-on dash system for a Lexus CT200h. A Raspberry Pi 4B drives a 4.3 inch DSI touch display through
+          DRM/KMS with no desktop session, and an overlay service watches the composite capture dongle so that the
+          reverse camera pops on top of the dash UI the moment the feed goes live, then gets out of the way.
+        </p>
+        <p>
+          Powered off an ACC fuse tap through a buck converter, which means the whole thing has to boot like an
+          appliance every time the key turns.
+        </p>
+        <div class="card__links">
+          <a class="tlink" href="https://github.com/dsuh02/raspberry-pi-reverse-camera-screen" target="_blank" rel="noopener">
+            View repository<svg><use href="#i-ext"></use></svg>
+          </a>
+        </div>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Raspberry Pi</span><span class="tag">DRM/KMS</span>
+          <span class="tag">GStreamer</span><span class="tag">systemd</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <p class="card__kicker mono">lab automation</p>
+        <h3>Instrument drivers over OPC UA</h3>
+        <p>
+          The hardware layer of a working wet lab: OPC UA servers exposing object models for spectrometers, pumps,
+          liquid handlers, and plate hotels, plus a robotic arm bridge with streaming motion control and a safety
+          monitor.
+        </p>
+        <p>
+          Alongside it, Raspberry Pi barcode scanners that post container moves straight into the LIMS, and an LED
+          rack-occupancy display so anyone can see what is loaded from across the room. Failure signaling here is
+          exception-based by policy, because a silent error on a robot arm is far worse than a loud one.
+        </p>
+        <div class="card__links">
+          <a class="tlink" href="https://github.com/dsuh02/lims-pi-scanners" target="_blank" rel="noopener">
+            Scanner repository<svg><use href="#i-ext"></use></svg>
+          </a>
+        </div>
+        <div class="tags">
+          <span class="tag">asyncua</span><span class="tag">OPC UA</span><span class="tag">Raspberry Pi</span>
+          <span class="tag">serial</span><span class="tag">Flask</span>
+        </div>
+      </article>
+
+    </div>
+
+    <details class="more">
+      <summary>Earlier work, from school and before</summary>
+      <div class="more__body">
+        <div class="mini">
+          <h4>CovidHacks 2020 <span>&middot; co-founder</span></h4>
+          <p>
+            Co-founded a 24 hour international virtual hackathon open to students of any skill level. I built the event
+            site and the visual raffle system, and ran sponsorship outreach. 315 participants submitted 54 projects, and
+            we put up $9,400 in prizes across three workshops and two sponsor challenges.
+            <a class="tlink" href="https://covidhacks2020.devpost.com/" target="_blank" rel="noopener" style="margin-left:.4rem">Devpost<svg><use href="#i-ext"></use></svg></a>
+          </p>
+        </div>
+        <div class="mini">
+          <h4>Spotted <span>&middot; USC, 2024</span></h4>
+          <p>
+            Interactive geographic data visualization on the Google Maps APIs over MySQL, with AJAX views for
+            reload-free interaction and Java servlets handling data and file management.
+          </p>
+        </div>
+        <div class="mini">
+          <h4>Emotify <span>&middot; USC, 2023</span></h4>
+          <p>
+            Mood-driven playlist generation on the OpenAI and Spotify APIs, with cookie-based session management,
+            servlet-rendered dynamic views, and SQL stored procedures securing the login flow.
+          </p>
+        </div>
+        <div class="mini">
+          <h4>Retro games in Java and C++ <span>&middot; 2023</span></h4>
+          <p>
+            Snake, 2048, and Tetris built from the Graphics and KeyListener classes up, with full play cycles and no
+            interruption between rounds. Where I learned that a game loop is just a scheduler with opinions.
+          </p>
+        </div>
+        <div class="mini">
+          <h4>SolarBoat9 <span>&middot; high school</span></h4>
+          <p>
+            A 16 foot solar-powered fiberglass boat built with a team for the SMUD-sponsored annual solar regatta. I
+            handled CAD modeling, chassis molding, the adaptive solar panel configuration, and the vector logo.
+          </p>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============================== stack ============================== -->
+<section class="sec sec--tint" id="stack">
+  <div class="wrap">
+    <div class="sec__head">
+      <span class="sec__num mono">03 / stack</span>
+      <h2>Tools I reach for</h2>
+      <p>
+        Listed without self-assigned ratings, because a number next to a language name has never told anyone anything
+        useful. Ask me about any of these and I will tell you honestly how deep I go.
+      </p>
+    </div>
+    <div class="stack">
+      <div class="stack__row">
+        <h3>Languages</h3>
+        <ul><li>Python</li><li>TypeScript</li><li>JavaScript</li><li>Java</li><li>C</li><li>C++</li><li>SQL</li><li>Bash</li></ul>
+      </div>
+      <div class="stack__row">
+        <h3>Backend</h3>
+        <ul><li>FastAPI</li><li>Flask / Jinja2</li><li>SQLAlchemy</li><li>Pydantic v2</li><li>asyncio</li><li>httpx</li><li>WebSockets</li><li>SSE</li><li>REST design</li></ul>
+      </div>
+      <div class="stack__row">
+        <h3>Data</h3>
+        <ul><li>PostgreSQL</li><li>pgvector</li><li>HNSW / IVFFlat</li><li>SQLite</li><li>SQLCipher</li><li>MySQL</li><li>Alembic</li><li>schema migrations</li></ul>
+      </div>
+      <div class="stack__row">
+        <h3>Frontend</h3>
+        <ul><li>React</li><li>Vite</li><li>TypeScript</li><li>Zustand</li><li>Tailwind</li><li>Recharts</li></ul>
+      </div>
+      <div class="stack__row">
+        <h3>LLM systems</h3>
+        <ul><li>multi-agent orchestration</li><li>tool calling</li><li>RAG</li><li>embedding pipelines</li><li>provider routing</li><li>cost tiering</li><li>offline evals</li></ul>
+      </div>
+      <div class="stack__row">
+        <h3>Infrastructure</h3>
+        <ul><li>Docker</li><li>Azure Container Apps</li><li>Managed Identity</li><li>Key Vault</li><li>API Management</li><li>Azure DevOps</li><li>Linux</li><li>Nuitka</li><li>uv</li></ul>
+      </div>
+      <div class="stack__row">
+        <h3>Testing</h3>
+        <ul><li>pytest</li><li>Playwright</li><li>Vitest</li><li>adversarial pre-merge review</li></ul>
+      </div>
+      <div class="stack__row">
+        <h3>Hardware</h3>
+        <ul><li>OPC UA (asyncua)</li><li>serial protocols</li><li>Raspberry Pi</li><li>embedded C</li><li>x86-64 assembly</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== writing ============================== -->
+<section class="sec" id="writing">
+  <div class="wrap">
+    <div class="sec__head">
+      <span class="sec__num mono">04 / writing</span>
+      <h2>Words, not code</h2>
+      <p>Engineering only counts once somebody else understands it. Some published attempts.</p>
+    </div>
+    <div class="writing">
+      <div class="wr">
         <div>
-          <a id="popup-button" href="https://covidhacks2020.devpost.com/" target="_blank">Visit Site</a>
+          <h3>Red Light, Green Light</h3>
+          <p>Featured article, USC Illumin Magazine</p>
         </div>
+        <a class="tlink" href="https://illumin.usc.edu/red-light-green-light/" target="_blank" rel="noopener">Read<svg><use href="#i-ext"></use></svg></a>
+      </div>
+      <div class="wr">
+        <div>
+          <h3>Engineering Addiction</h3>
+          <p>USC Viterbi Conversations in Ethics</p>
+        </div>
+        <a class="tlink" href="assets/VCE Article - Engineering Addiction.pdf" target="_blank" rel="noopener">PDF<svg><use href="#i-ext"></use></svg></a>
+      </div>
+      <div class="wr">
+        <div>
+          <h3>Water Shortages in the Southwestern U.S.</h3>
+          <p>Research writing</p>
+        </div>
+        <a class="tlink" href="assets/Water Shortages Project.pdf" target="_blank" rel="noopener">PDF<svg><use href="#i-ext"></use></svg></a>
       </div>
     </div>
   </div>
-  <div id="sb9popup-article" class="popup">
-    <div class="popup__container">
-      <a href="#projtag" class="popup__close">
-        <span class="screen-reader">X</span>
-      </a>  
-      <div class="popup__content">
-        <h1 class="popup__title r-title">SolarBoat9</h1>
-        <img src="img/sb9.jpg" alt="chlego">
-        <p>Collaborated with a team to create a 16 ft long solar-powered fiberglass boat to compete in the SMUD-sponsored annual solar regatta. Personal responsibilities included: CAD modeling, chassis molding, and overseeing the use of power machinery. Also responsible for the adaptive solar panel configuration and vector logo design.</p>
-        <div id="popup-wrapper" class="wrapper3-111">
-          <img src="img/sbemb1.PNG" alt="sbemb1">
-          <img src="img/sbemb2.PNG" alt="sbemb2">
-          <img src="img/sbemb3.PNG" alt="sbemb3">
-          <img src="img/sbemb4.PNG" alt="sbemb4">
-          <img src="img/sbemb5.PNG" alt="sbemb5">
-        </div>
-      </div>
+</section>
+
+<!-- ============================== about ============================== -->
+<section class="sec sec--tint" id="about">
+  <div class="wrap">
+    <div class="sec__head">
+      <span class="sec__num mono">05 / about</span>
+      <h2>The short version</h2>
     </div>
-  </div>
-  <div id="aapopup-article" class="popup">
-    <div class="popup__container">
-      <a href="#projtag" class="popup__close">
-        <span class="screen-reader">X</span>
-      </a>  
-      <div class="popup__content">
-        <h1 class="popup__title r-title">Agend-Aid</h1>
-        <img src="img/agendaid.jpg" alt="agendaid">
-        <p><b><i>The Problem:</i></b><br>
-          Many instructors have a problem with keeping all of their work-related applications in one place,
-          often leading to lower efficiency and issues performing daily tasks like sending out students 
-          to the bathroom or the office. <br><br>
-          <b><i>The App:</i></b><br>
-          This application  has all the necessary features that could accompany the 
-          instructor besides existing registrar applications like Powerschool. This would allow less 
-          actions to be performed in order to organize the day for the many classes an instructor has. <br><br>
-          <b><i>Agend-Aid Features:</i></b><br>
+    <div class="about">
+      <img class="about__photo" src="img/headshot.jpg" width="560" height="560" alt="Daniel Suh" loading="lazy" decoding="async">
+      <div class="about__body">
+        <p>
+          I am a software engineer at Persist AI Formulations in Sacramento. I own our lab information management system
+          end to end and work across the AI platform, which day to day means Postgres schemas, FastAPI services, React
+          interfaces, and a genuinely large amount of time reading production logs. I also run sprint planning and pull
+          request review for the team.
         </p>
-        <p id="popup_list">
-          -Daily agenda plan for each class. <br>
-          -Class attendance by period. <br>
-          -The ability to assign and receive hall passes which cuts out wasted time for office TA. <br>
-          -<b>VITAL:</b> allows swift and silent communication between campus security and staff while not alarming possible perpetrators.<br> 
-          -Confidential login for instructors, staff, and campus security. <br>
-          -Helpful information for staff and students (Emergency info, School Map, Phone #’s, etc.)
+        <p>
+          I like the parts of software that touch something real. At work that is instruments and a robot arm in a wet
+          lab. At home it is a panel on the wall that runs the lights. The common thread is that when an abstraction
+          leaks, something physical stops moving, and it turns out that is a very good forcing function for writing
+          honest code.
+        </p>
+        <p>
+          Computer science at USC, class of 2025, with a California Seal of Biliteracy in French along the way. I speak
+          Korean too. Before all of this I co-founded a hackathon, helped build a solar-powered boat, and wrote for the
+          engineering school's magazine.
+        </p>
+        <p>
+          If you want the compressed version, it is
+          <a href="assets/Daniel-Suh-Resume.pdf" target="_blank" rel="noopener">one page long</a>.
         </p>
       </div>
-      <div id="popup-wrapper" class="wrapper3-111">
-        <img src="img/aaemb1.png" alt="aaemb1">
-        <img src="img/aaemb2.png" alt="aaemb2">
-        <img src="img/aaemb3.png" alt="aaemb3">
-        <img src="img/aaemb4.png" alt="aaemb4">
-        <img src="img/aaemb5.png" alt="aaemb5">
-      </div>
     </div>
   </div>
-  <div id="snakepopup-article" class="popup">
-    <div class="popup__container">
-      <a href="#projtag" class="popup__close">
-        <span class="screen-reader">X</span>
-      </a>  
-      <div class="popup__content">
-        <h1 class="popup__title r-title">Java Projects: Snake, 2048, and more</h1>
-        <img src="img/snake.png" alt="snake">
-        <p>Created retro games in Java using the Graphics and KeyListener Classes. These projects have the full functionality of the original games and can repeat play cycles with no interruption.</p>
-        <div id="popup-wrapper" class="wrapper3-111">
-          <img src="img/javaemb1.PNG" alt="javaemb1">
-          <img src="img/snake.png" alt="javaemb2">
-          <img src="img/javaemb3.PNG" alt="javaemb3">
-          <img src="img/javaemb4.png" alt="javaemb4" style="height: 100px;align-self: center;">
-        </div>
-        <p>View repositories below.</p>
-        <div style="margin-top: 50px;">
-          <a id="popup-button" href="https://github.com/dsuh02" target="_blank">Visit Github</a>
-        </div>
-      </div>
+</section>
+
+<!-- ============================== contact ============================== -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Let's talk shop.</h2>
+    <p>
+      Email is the fastest way to reach me. I am always happy to get into Postgres, agent pipelines, or why your health
+      check is lying to you.
+    </p>
+    <div class="cta">
+      <a class="btn btn--primary" href="mailto:dsuh3508@gmail.com"><svg><use href="#i-mail"></use></svg>dsuh3508@gmail.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/danielsuh8205/" target="_blank" rel="noopener"><svg><use href="#i-li"></use></svg>LinkedIn</a>
+      <a class="btn" href="https://github.com/dsuh02" target="_blank" rel="noopener"><svg><use href="#i-gh"></use></svg>GitHub</a>
     </div>
   </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <span>&copy; <span id="yr">2026</span> Daniel Suh</span>
+    <span>hand-written HTML, CSS, and JS <b>/</b> no framework, no build step <b>/</b> deployed by <code>git push</code></span>
+    <span class="sp">press <b>t</b> for theme</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="js/site.js" defer></script>
 </body>
 </html>
