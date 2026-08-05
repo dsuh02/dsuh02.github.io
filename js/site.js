@@ -100,18 +100,81 @@
   var yr = document.getElementById("yr");
   if (yr) yr.textContent = String(new Date().getFullYear());
 
-  /* --------------------------------------------------------- scroll progress */
+  /* ------------------------------------------------- scroll-driven decoration
+     One rAF-throttled scroll handler drives the progress bar, the hero
+     parallax, and the section rail. Everything it touches is decorative, so a
+     failure here costs polish and nothing else. */
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var prog = document.getElementById("prog");
-  function onProgress() {
-    if (!prog) return;
-    var doc = document.documentElement;
-    var max = doc.scrollHeight - window.innerHeight;
-    var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
-    prog.style.width = Math.max(0, Math.min(100, pct)) + "%";
+  var rail = document.getElementById("rail");
+  var heroGrid = document.querySelector(".hero__grid");
+  var heroNet = document.querySelector(".hero__net");
+  var glowA = document.querySelector(".hero__glow--a");
+  var glowB = document.querySelector(".hero__glow--b");
+
+  // build the rail from whatever sections exist, so it cannot fall out of sync
+  var railDots = [];
+  if (rail && sections.length) {
+    sections.forEach(function () {
+      var d = document.createElement("i");
+      rail.appendChild(d);
+      railDots.push(d);
+    });
   }
-  onProgress();
-  window.addEventListener("scroll", onProgress, { passive: true });
-  window.addEventListener("resize", onProgress);
+
+  var queued = false;
+  function onScrollFrame() {
+    queued = false;
+    var doc = document.documentElement;
+    var y = window.scrollY;
+    var max = doc.scrollHeight - window.innerHeight;
+
+    if (prog) prog.style.width = (max > 0 ? Math.max(0, Math.min(100, (y / max) * 100)) : 0) + "%";
+
+    // hero layers drift at different rates while the hero is still on screen
+    if (!reduceMotion && y < window.innerHeight * 1.5) {
+      if (heroGrid) heroGrid.style.transform = "translate3d(0," + (y * 0.14).toFixed(1) + "px,0)";
+      if (heroNet) heroNet.style.transform = "translate3d(0," + (y * 0.26).toFixed(1) + "px,0)";
+      if (glowA) glowA.style.transform = "translate3d(0," + (y * 0.09).toFixed(1) + "px,0)";
+      if (glowB) glowB.style.transform = "translate3d(0," + (y * -0.06).toFixed(1) + "px,0)";
+    }
+
+    // rail: mark everything above the midpoint as seen, nearest one as active
+    if (railDots.length) {
+      var mid = y + window.innerHeight * 0.4;
+      var activeIdx = 0;
+      for (var i = 0; i < sections.length; i++) {
+        var top = sections[i].offsetTop;
+        var seen = mid >= top;
+        railDots[i].setAttribute("data-seen", seen ? "true" : "false");
+        if (seen) activeIdx = i;
+      }
+      for (var j = 0; j < railDots.length; j++) {
+        railDots[j].setAttribute("data-active", j === activeIdx ? "true" : "false");
+      }
+    }
+  }
+  function onScrollDecor() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(onScrollFrame);
+  }
+  onScrollFrame();
+  window.addEventListener("scroll", onScrollDecor, { passive: true });
+  window.addEventListener("resize", onScrollDecor);
+
+  /* -------------------------------------------------------- cursor spotlight
+     Writes --mx/--my on the hovered card. The CSS has fallback values, so if
+     this never runs the cards simply have no spotlight. */
+  if (!reduceMotion && window.matchMedia("(hover: hover)").matches) {
+    document.addEventListener("pointermove", function (e) {
+      var card = e.target.closest && e.target.closest(".card");
+      if (!card) return;
+      var r = card.getBoundingClientRect();
+      card.style.setProperty("--mx", (((e.clientX - r.left) / r.width) * 100).toFixed(1) + "%");
+      card.style.setProperty("--my", (((e.clientY - r.top) / r.height) * 100).toFixed(1) + "%");
+    }, { passive: true });
+  }
 
   /* ----------------------------------------------------------------- toast */
   var toastEl = document.getElementById("toast");

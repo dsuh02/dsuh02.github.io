@@ -98,6 +98,42 @@
     <div class="hero__grid"></div>
     <div class="hero__glow hero__glow--a"></div>
     <div class="hero__glow hero__glow--b"></div>
+    <!-- Decorative. Every path declares pathLength="100" so one dash keyframe
+         drives all of them regardless of their real length. -->
+    <svg class="hero__net" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid slice">
+      <g>
+        <path class="edge" pathLength="100" d="M60 120 C 260 120, 300 300, 520 300"/>
+        <path class="edge" pathLength="100" d="M60 480 C 280 480, 300 320, 520 300"/>
+        <path class="edge" pathLength="100" d="M520 300 C 700 300, 720 140, 900 140"/>
+        <path class="edge" pathLength="100" d="M520 300 C 700 300, 730 460, 900 460"/>
+        <path class="edge" pathLength="100" d="M900 140 C 1030 140, 1060 260, 1150 260"/>
+        <path class="edge" pathLength="100" d="M900 460 C 1030 460, 1060 330, 1150 330"/>
+        <path class="edge" pathLength="100" d="M60 300 C 240 300, 340 300, 520 300"/>
+      </g>
+      <g>
+        <path class="pulse" pathLength="100" d="M60 120 C 260 120, 300 300, 520 300"/>
+        <path class="pulse" pathLength="100" d="M60 480 C 280 480, 300 320, 520 300"/>
+        <path class="pulse" pathLength="100" d="M520 300 C 700 300, 720 140, 900 140"/>
+        <path class="pulse" pathLength="100" d="M520 300 C 700 300, 730 460, 900 460"/>
+        <path class="pulse" pathLength="100" d="M900 140 C 1030 140, 1060 260, 1150 260"/>
+        <path class="pulse" pathLength="100" d="M900 460 C 1030 460, 1060 330, 1150 330"/>
+        <path class="pulse" pathLength="100" d="M60 300 C 240 300, 340 300, 520 300"/>
+      </g>
+      <g>
+        <circle class="node" cx="60" cy="120" r="3.4"/>
+        <circle class="node" cx="60" cy="300" r="3.4"/>
+        <circle class="node" cx="60" cy="480" r="3.4"/>
+        <circle class="node" cx="900" cy="140" r="3.4"/>
+        <circle class="node" cx="900" cy="460" r="3.4"/>
+        <circle class="node" cx="1150" cy="260" r="3.4"/>
+        <circle class="node" cx="1150" cy="330" r="3.4"/>
+      </g>
+      <g>
+        <circle class="node--live" cx="520" cy="300" r="2.6"/>
+        <circle class="node--live" cx="900" cy="140" r="2.6"/>
+        <circle class="node--live" cx="900" cy="460" r="2.6"/>
+      </g>
+    </svg>
   </div>
   <div class="wrap">
     <p class="hero__status mono"><span class="dot"></span>Sacramento, CA &nbsp;/&nbsp; Software Engineer at Persist AI Formulations</p>
@@ -564,7 +600,7 @@ static/js/     <b>grid engine, schema-driven settings, widget implementations</b
       <h2>The short version</h2>
     </div>
     <div class="about">
-      <img class="about__photo" src="img/headshot.jpg" width="560" height="560" alt="Daniel Suh" loading="lazy" decoding="async">
+      <img class="about__photo" src="img/headshot.jpg" width="440" height="484" alt="Daniel Suh" loading="lazy" decoding="async">
       <div class="about__body">
         <p>
           I am a software engineer at Persist AI Formulations in Sacramento. I own our lab information management system
@@ -620,6 +656,10 @@ static/js/     <b>grid engine, schema-driven settings, widget implementations</b
 </footer>
 
 <div class="prog" id="prog" aria-hidden="true"></div>
+
+<!-- Section indicator. Inert on purpose: the header nav is the real navigation,
+     so these are not links and there is nothing extra to tab through. -->
+<div class="rail" id="rail" aria-hidden="true"></div>
 
 <!-- Command palette. Pure enhancement: it is inert without JavaScript, and
      every destination in it is also a plain link somewhere on the page. -->
