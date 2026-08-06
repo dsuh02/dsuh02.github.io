@@ -164,59 +164,101 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* =========================================================================
    hero
    ========================================================================= */
-.hero { position: relative; padding: clamp(3.5rem, 11vw, 8rem) 0 clamp(3rem, 8vw, 5.5rem); overflow: hidden; }
-.hero__bg { position: absolute; inset: -20% -10% auto; height: 150%; z-index: -1; pointer-events: none; }
-.hero__grid {
-  position: absolute; inset: 0;
+.hero { position: relative; padding: clamp(3.5rem, 11vw, 8rem) 0 clamp(3rem, 8vw, 5.5rem); }
+/* =========================================================================
+   persistent background
+   Fixed behind the entire document. Sits at z-index 0 with every content
+   landmark lifted to 1, so it never covers anything and never scrolls away.
+   All scroll response reads from --p (0 to 1) which js writes on :root.
+   ========================================================================= */
+:root { --p: 0; }
+.bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+header, main, footer { position: relative; z-index: 1; }
+
+.bg__grid {
+  position: absolute; inset: -10%;
   background-image:
     linear-gradient(to right, var(--border-soft) 1px, transparent 1px),
     linear-gradient(to bottom, var(--border-soft) 1px, transparent 1px);
-  background-size: 62px 62px;
-  mask-image: radial-gradient(120% 80% at 22% 12%, #000 0%, transparent 72%);
-  opacity: .85;
+  background-size: 64px 64px;
+  mask-image: radial-gradient(130% 100% at 20% 0%, #000 0%, transparent 78%);
+  opacity: .9;
+  /* drifts diagonally, one grid cell per full page of scroll */
+  transform: translate3d(calc(var(--p) * -64px), calc(var(--p) * -64px), 0);
 }
-/* ---------- animated hero schematic ----------
-   A small network of nodes with pulses travelling along the edges. Every path
-   carries pathLength="100" so the dash maths is identical regardless of the
-   real geometry, which is what lets one keyframe drive all of them. */
-.hero__net {
-  position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible;
-  /* Keep the schematic out of the text column. The copy is capped around 58ch
-     on the left, so the network fades in only past the midpoint and never runs
-     a bright pulse underneath a line of prose. */
+
+.bg__glow { position: absolute; border-radius: 50%; filter: blur(110px); }
+.bg__glow--a {
+  width: 34vw; height: 34vw; left: 2vw; top: 4vh; background: var(--accent); opacity: .085;
+  transform: translate3d(calc(var(--p) * 26vw), calc(var(--p) * 44vh), 0);
+}
+.bg__glow--b {
+  width: 30vw; height: 30vw; right: 2vw; top: 14vh; background: var(--accent-2); opacity: .10;
+  transform: translate3d(calc(var(--p) * -30vw), calc(var(--p) * 30vh), 0);
+}
+.bg__glow--c {
+  width: 26vw; height: 26vw; left: 40vw; bottom: -12vh; background: var(--accent-2);
+  opacity: calc(var(--p) * .09);
+  transform: translate3d(0, calc(var(--p) * -46vh), 0);
+}
+:root[data-theme="light"] .bg__glow--a { opacity: .13; }
+:root[data-theme="light"] .bg__glow--b { opacity: .12; }
+
+/* ---------- the schematic ----------
+   Every path declares pathLength="100" so a single dash keyframe drives all of
+   them regardless of real geometry. The whole group pans and rotates with --p,
+   so scrolling flies you across the network rather than past a static picture. */
+.bg__net {
+  position: absolute; inset: -14%; width: 128%; height: 128%; overflow: visible;
+  transform:
+    translate3d(calc(var(--p) * -9%), calc(var(--p) * -13%), 0)
+    rotate(calc(var(--p) * 4deg))
+    scale(calc(1 + var(--p) * 0.14));
+  /* Gutter-weighted. Content is capped at 1080px and centred, so the outer
+     thirds of the viewport are the only place the network is ever really
+     visible. Weighting it there lets it run much brighter than it could if it
+     had to stay readable underneath a paragraph. */
   mask-image:
-    linear-gradient(to right, transparent 0 34%, #000 64%, #000 100%),
-    linear-gradient(to bottom, #000 0 72%, transparent 96%);
+    linear-gradient(to right,
+      #000 0 16%, rgba(0,0,0,.22) 36%, rgba(0,0,0,.22) 64%, #000 84% 100%),
+    linear-gradient(to bottom, transparent 0, #000 12% 88%, transparent 100%);
   mask-composite: intersect;
   -webkit-mask-image:
-    linear-gradient(to right, transparent 0 34%, #000 64%, #000 100%),
-    linear-gradient(to bottom, #000 0 72%, transparent 96%);
+    linear-gradient(to right,
+      #000 0 16%, rgba(0,0,0,.22) 36%, rgba(0,0,0,.22) 64%, #000 84% 100%),
+    linear-gradient(to bottom, transparent 0, #000 12% 88%, transparent 100%);
   -webkit-mask-composite: source-in;
 }
-@media (max-width: 820px) { .hero__net { display: none; } }
-.hero__net .edge {
-  fill: none; stroke: var(--border); stroke-width: .6; opacity: .9;
+.bg__edges path { fill: none; stroke: var(--border); stroke-width: 1; }
+.bg__pulses path {
+  fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-linecap: round;
+  stroke-dasharray: 5 95;
+  opacity: calc(.55 + var(--p) * .35);
+  animation: pulse-run 8s linear infinite;
 }
-.hero__net .pulse {
-  fill: none; stroke: var(--accent); stroke-width: 1.1; stroke-linecap: round;
-  stroke-dasharray: 6 94; opacity: .55;
-  animation: pulse-run 7s linear infinite;
-}
-.hero__net .pulse:nth-of-type(2) { animation-duration: 9s;  animation-delay: -1.4s; }
-.hero__net .pulse:nth-of-type(3) { animation-duration: 6.2s; animation-delay: -3.1s; }
-.hero__net .pulse:nth-of-type(4) { animation-duration: 11s;  animation-delay: -5.5s; }
-.hero__net .pulse:nth-of-type(5) { animation-duration: 8.4s; animation-delay: -2.2s; }
-.hero__net .pulse:nth-of-type(6) { animation-duration: 10s;  animation-delay: -6.8s; }
-.hero__net .pulse:nth-of-type(7) { animation-duration: 7.6s; animation-delay: -4.4s; }
+.bg__pulses path:nth-child(2)  { animation-duration: 10.5s; animation-delay: -1.4s; }
+.bg__pulses path:nth-child(3)  { animation-duration: 6.8s;  animation-delay: -3.1s; }
+.bg__pulses path:nth-child(4)  { animation-duration: 12s;   animation-delay: -5.5s; }
+.bg__pulses path:nth-child(5)  { animation-duration: 9.2s;  animation-delay: -2.2s; }
+.bg__pulses path:nth-child(6)  { animation-duration: 11s;   animation-delay: -6.8s; }
+.bg__pulses path:nth-child(7)  { animation-duration: 7.4s;  animation-delay: -4.4s; }
+.bg__pulses path:nth-child(8)  { animation-duration: 13s;   animation-delay: -8.1s; }
+.bg__pulses path:nth-child(9)  { animation-duration: 8.6s;  animation-delay: -0.7s; }
+.bg__pulses path:nth-child(10) { animation-duration: 14s;   animation-delay: -9.3s; }
 @keyframes pulse-run { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
 
-.hero__net .node { fill: var(--bg); stroke: var(--border); stroke-width: .8; }
-.hero__net .node--live {
+.bg__nodes circle { fill: var(--bg); stroke: var(--border); stroke-width: .9; }
+/* Each live node carries its own --at threshold, so they switch on one by one
+   as you descend. Falls back to fully lit if calc or var is unavailable. */
+.bg__live circle {
   fill: var(--accent); stroke: none;
-  animation: node-breathe 4s ease-in-out infinite;
+  opacity: clamp(0, (var(--p) - var(--at)) * 9, .85);
 }
-.hero__net .node--live:nth-of-type(even) { animation-delay: -2s; }
-@keyframes node-breathe { 0%, 100% { opacity: .8; r: 2.6; } 50% { opacity: .25; r: 2; } }
+
+@media (max-width: 720px) {
+  .bg__net { opacity: .55; }
+  .bg__glow { filter: blur(80px); }
+}
 
 /* ---------- film grain ----------
    Fixed, non-interactive, and under the nav. Gives the flat panels some tooth. */
@@ -227,14 +269,6 @@ body::after {
 }
 :root[data-theme="light"] body::after { opacity: .035; }
 
-.hero__glow {
-  position: absolute; border-radius: 50%; filter: blur(120px);
-}
-.hero__glow--a { width: 32vw; height: 32vw; left: 2vw;   top: 6vw;  background: var(--accent);   opacity: .085; animation: drift 24s var(--ease) infinite alternate; }
-.hero__glow--b { width: 30vw; height: 30vw; right: 2vw;  top: 16vw; background: var(--accent-2); opacity: .10;  animation: drift 30s var(--ease) infinite alternate-reverse; }
-:root[data-theme="light"] .hero__glow--a { opacity: .13; }
-:root[data-theme="light"] .hero__glow--b { opacity: .12; }
-@keyframes drift { from { transform: translate3d(0,0,0) scale(1); } to { transform: translate3d(4vw,3vw,0) scale(1.14); } }
 
 .hero__status { display: inline-flex; align-items: center; gap: .55rem; color: var(--muted); margin-bottom: 1.35rem; }
 .dot {
@@ -273,8 +307,27 @@ body::after {
 /* =========================================================================
    sections
    ========================================================================= */
-.sec { padding: clamp(3.2rem, 8vw, 5.6rem) 0; scroll-margin-top: 4.5rem; }
-.sec--tint { background: var(--bg-alt); border-block: 1px solid var(--border-soft); }
+/* Section backgrounds are deliberately NOT opaque. They are a veil over the
+   fixed background: enough to keep body text on a solid-reading surface, sheer
+   enough that the network and glows stay visible while you scroll. The hero has
+   no veil at all, which is why the schematic reads strongest at the top. */
+.sec {
+  padding: clamp(3.2rem, 8vw, 5.6rem) 0; scroll-margin-top: 4.5rem;
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+}
+.sec--tint {
+  background: color-mix(in srgb, var(--bg-alt) 85%, transparent);
+  border-block: 1px solid var(--border-soft);
+}
+.contact { background: color-mix(in srgb, var(--bg) 80%, transparent); }
+.foot { background: color-mix(in srgb, var(--bg) 88%, transparent); }
+/* No color-mix support: fall back to fully opaque, which costs the effect but
+   never costs legibility. */
+@supports not (background: color-mix(in srgb, red 50%, transparent)) {
+  .sec, .contact { background: var(--bg); }
+  .sec--tint { background: var(--bg-alt); }
+  .foot { background: var(--bg); }
+}
 .sec__head { margin-bottom: clamp(1.9rem, 4vw, 2.8rem); }
 .sec__num { color: var(--accent); display: block; margin-bottom: .5rem; }
 .sec__head h2 {
@@ -552,6 +605,6 @@ details.more > summary:hover { color: var(--accent); }
 }
 
 @media print {
-  .nav, .hero__bg, .toast, .cta, .navtoggle { display: none !important; }
+  .nav, .bg, .rail, .prog, .toast, .cta, .navtoggle { display: none !important; }
   body { background: #fff; color: #000; }
 }

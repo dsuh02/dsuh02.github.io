@@ -107,10 +107,6 @@
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var prog = document.getElementById("prog");
   var rail = document.getElementById("rail");
-  var heroGrid = document.querySelector(".hero__grid");
-  var heroNet = document.querySelector(".hero__net");
-  var glowA = document.querySelector(".hero__glow--a");
-  var glowB = document.querySelector(".hero__glow--b");
 
   // build the rail from whatever sections exist, so it cannot fall out of sync
   var railDots = [];
@@ -129,15 +125,14 @@
     var y = window.scrollY;
     var max = doc.scrollHeight - window.innerHeight;
 
-    if (prog) prog.style.width = (max > 0 ? Math.max(0, Math.min(100, (y / max) * 100)) : 0) + "%";
+    var p = max > 0 ? Math.max(0, Math.min(1, y / max)) : 0;
 
-    // hero layers drift at different rates while the hero is still on screen
-    if (!reduceMotion && y < window.innerHeight * 1.5) {
-      if (heroGrid) heroGrid.style.transform = "translate3d(0," + (y * 0.14).toFixed(1) + "px,0)";
-      if (heroNet) heroNet.style.transform = "translate3d(0," + (y * 0.26).toFixed(1) + "px,0)";
-      if (glowA) glowA.style.transform = "translate3d(0," + (y * 0.09).toFixed(1) + "px,0)";
-      if (glowB) glowB.style.transform = "translate3d(0," + (y * -0.06).toFixed(1) + "px,0)";
-    }
+    if (prog) prog.style.width = (p * 100).toFixed(2) + "%";
+
+    // One property drives the entire background: grid drift, three glow paths,
+    // the schematic's pan/rotate/scale, pulse brightness, and which nodes are
+    // lit. Under reduced motion it stays pinned at 0 and nothing moves.
+    if (!reduceMotion) doc.style.setProperty("--p", p.toFixed(4));
 
     // rail: mark everything above the midpoint as seen, nearest one as active
     if (railDots.length) {
