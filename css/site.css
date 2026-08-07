@@ -300,20 +300,44 @@ body::after {
 /* =========================================================================
    sections
    ========================================================================= */
-/* Section backgrounds are deliberately NOT opaque. They are a veil over the
-   fixed background: enough to keep body text on a solid-reading surface, sheer
-   enough that the network and glows stay visible while you scroll. The hero has
-   no veil at all, which is why the schematic reads strongest at the top. */
+/* ---------- section veils ----------
+   The veil sits behind the CONTENT COLUMN ONLY, never full bleed. Stops are
+   calc'd off the 1080px wrap (540px half-width plus an 80px fade), so the outer
+   gutters stay completely clear and the fixed background stays visible the whole
+   way down instead of only in the hero. This pairs with the network's
+   gutter-weighted mask: the backdrop is brightest exactly where the veil is
+   absent. On narrow screens the negative stops clamp to the edges and the veil
+   covers the full width, which is what you want when there are no gutters.
+
+   --veil is the alpha over the content column. Sections vary it, so some cover
+   most of the background and others barely touch it, but none cover all of it. */
 .sec {
   padding: clamp(3.2rem, 8vw, 5.6rem) 0; scroll-margin-top: 4.5rem;
-  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  --veil-color: var(--bg);
+  --veil: 74%;
+  background: linear-gradient(to right,
+    transparent            calc(50% - 620px),
+    color-mix(in srgb, var(--veil-color) var(--veil), transparent) calc(50% - 540px),
+    color-mix(in srgb, var(--veil-color) var(--veil), transparent) calc(50% + 540px),
+    transparent            calc(50% + 620px));
 }
-.sec--tint {
-  background: color-mix(in srgb, var(--bg-alt) 85%, transparent);
-  border-block: 1px solid var(--border-soft);
+.sec--tint { --veil-color: var(--bg-alt); --veil: 80%; border-block: 1px solid var(--border-soft); }
+/* Sections whose text already sits on its own card surface need the least veil,
+   so the background reads strongest through those. */
+#projects { --veil: 60%; }
+#writing  { --veil: 64%; }
+
+.contact {
+  --veil-color: var(--bg);
+  --veil: 68%;
+  background: linear-gradient(to right,
+    transparent            calc(50% - 620px),
+    color-mix(in srgb, var(--veil-color) var(--veil), transparent) calc(50% - 540px),
+    color-mix(in srgb, var(--veil-color) var(--veil), transparent) calc(50% + 540px),
+    transparent            calc(50% + 620px));
 }
-.contact { background: color-mix(in srgb, var(--bg) 80%, transparent); }
-.foot { background: color-mix(in srgb, var(--bg) 88%, transparent); }
+.foot { background: color-mix(in srgb, var(--bg) 76%, transparent); }
+
 /* No color-mix support: fall back to fully opaque, which costs the effect but
    never costs legibility. */
 @supports not (background: color-mix(in srgb, red 50%, transparent)) {
