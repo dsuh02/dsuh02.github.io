@@ -129,10 +129,9 @@
 
     if (prog) prog.style.width = (p * 100).toFixed(2) + "%";
 
-    // One property drives the entire background: grid drift, three glow paths,
-    // the schematic's pan/rotate/scale, pulse brightness, and which nodes are
-    // lit. Under reduced motion it stays pinned at 0 and nothing moves.
-    if (!reduceMotion) doc.style.setProperty("--p", p.toFixed(4));
+    // Nothing else here touches the background. It is a fixed, anchored layer:
+    // the movement you see is the content travelling over it, which costs zero
+    // work per frame and is the whole point of the effect.
 
     // rail: mark everything above the midpoint as seen, nearest one as active
     if (railDots.length) {

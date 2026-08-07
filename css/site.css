@@ -171,49 +171,39 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    landmark lifted to 1, so it never covers anything and never scrolls away.
    All scroll response reads from --p (0 to 1) which js writes on :root.
    ========================================================================= */
-:root { --p: 0; }
+/* The background is ANCHORED. It does not scroll, drift, pan, or respond to
+   scroll position in any way. The sense of movement comes entirely from the
+   content sheets travelling over it, which is why the sections are translucent
+   veils rather than opaque blocks: you watch their edges pass across a backdrop
+   that stays put. An earlier version moved the background with scroll and it
+   read as the whole page sliding, which killed the parallax illusion. */
 .bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
 header, main, footer { position: relative; z-index: 1; }
 
 .bg__grid {
-  position: absolute; inset: -10%;
+  position: absolute; inset: 0;
   background-image:
     linear-gradient(to right, var(--border-soft) 1px, transparent 1px),
     linear-gradient(to bottom, var(--border-soft) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(130% 100% at 20% 0%, #000 0%, transparent 78%);
   opacity: .9;
-  /* drifts diagonally, one grid cell per full page of scroll */
-  transform: translate3d(calc(var(--p) * -64px), calc(var(--p) * -64px), 0);
 }
 
 .bg__glow { position: absolute; border-radius: 50%; filter: blur(110px); }
-.bg__glow--a {
-  width: 34vw; height: 34vw; left: 2vw; top: 4vh; background: var(--accent); opacity: .085;
-  transform: translate3d(calc(var(--p) * 26vw), calc(var(--p) * 44vh), 0);
-}
-.bg__glow--b {
-  width: 30vw; height: 30vw; right: 2vw; top: 14vh; background: var(--accent-2); opacity: .10;
-  transform: translate3d(calc(var(--p) * -30vw), calc(var(--p) * 30vh), 0);
-}
-.bg__glow--c {
-  width: 26vw; height: 26vw; left: 40vw; bottom: -12vh; background: var(--accent-2);
-  opacity: calc(var(--p) * .09);
-  transform: translate3d(0, calc(var(--p) * -46vh), 0);
-}
+.bg__glow--a { width: 34vw; height: 34vw; left: -4vw;  top: 2vh;    background: var(--accent);   opacity: .085; }
+.bg__glow--b { width: 30vw; height: 30vw; right: -2vw; top: 18vh;   background: var(--accent-2); opacity: .10; }
+.bg__glow--c { width: 26vw; height: 26vw; left: 38vw;  bottom: -14vh; background: var(--accent-2); opacity: .05; }
 :root[data-theme="light"] .bg__glow--a { opacity: .13; }
 :root[data-theme="light"] .bg__glow--b { opacity: .12; }
+:root[data-theme="light"] .bg__glow--c { opacity: .07; }
 
 /* ---------- the schematic ----------
    Every path declares pathLength="100" so a single dash keyframe drives all of
    them regardless of real geometry. The whole group pans and rotates with --p,
    so scrolling flies you across the network rather than past a static picture. */
 .bg__net {
-  position: absolute; inset: -14%; width: 128%; height: 128%; overflow: visible;
-  transform:
-    translate3d(calc(var(--p) * -9%), calc(var(--p) * -13%), 0)
-    rotate(calc(var(--p) * 4deg))
-    scale(calc(1 + var(--p) * 0.14));
+  position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible;
   /* Gutter-weighted. Content is capped at 1080px and centred, so the outer
      thirds of the viewport are the only place the network is ever really
      visible. Weighting it there lets it run much brighter than it could if it
@@ -230,10 +220,12 @@ header, main, footer { position: relative; z-index: 1; }
   -webkit-mask-composite: source-in;
 }
 .bg__edges path { fill: none; stroke: var(--border); stroke-width: 1; }
+/* The one thing that does animate: pulses travelling the edges. That is the
+   backdrop being alive in place, not the backdrop moving, so it does not
+   compete with the illusion of content sliding over it. */
 .bg__pulses path {
   fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-linecap: round;
-  stroke-dasharray: 5 95;
-  opacity: calc(.55 + var(--p) * .35);
+  stroke-dasharray: 5 95; opacity: .7;
   animation: pulse-run 8s linear infinite;
 }
 .bg__pulses path:nth-child(2)  { animation-duration: 10.5s; animation-delay: -1.4s; }
@@ -248,12 +240,13 @@ header, main, footer { position: relative; z-index: 1; }
 @keyframes pulse-run { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
 
 .bg__nodes circle { fill: var(--bg); stroke: var(--border); stroke-width: .9; }
-/* Each live node carries its own --at threshold, so they switch on one by one
-   as you descend. Falls back to fully lit if calc or var is unavailable. */
+/* Breathing in place, on their own clocks. No scroll coupling. */
 .bg__live circle {
-  fill: var(--accent); stroke: none;
-  opacity: clamp(0, (var(--p) - var(--at)) * 9, .85);
+  fill: var(--accent); stroke: none; opacity: .7;
+  animation: node-breathe 5s ease-in-out infinite;
+  animation-delay: calc(var(--at, 0) * -6s);
 }
+@keyframes node-breathe { 0%, 100% { opacity: .75; } 50% { opacity: .28; } }
 
 @media (max-width: 720px) {
   .bg__net { opacity: .55; }
